@@ -4,7 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Justin Tagalogon-Nguyen | Software Engineer</title>
-<meta name="description" content="Software engineer who turns manual, outdated processes into tools people are excited to use. Explore my project tree.">
+<meta name="description" content="Software engineer building tools that simplify, optimize and enhance the way people work. Explore my project tree.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Justin Tagalogon-Nguyen | Software Engineer">
+<meta property="og:description" content="Software engineer building tools that simplify, optimize and enhance the way people work. Explore my project tree.">
+<meta property="og:url" content="https://jtagalogon.github.io/">
+<meta property="og:image" content="https://jtagalogon.github.io/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://jtagalogon.github.io/img/og.jpg">
+<link rel="icon" href="img/me_sm.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -13,13 +23,13 @@
   --bg:#fbfdfc; --bg2:#f1f7f5; --card:#ffffff; --text:#13201e; --muted:#5a6a67; --line:#e1eae8;
   --accent:#1fa88f; --accent-ink:#0b6b5a;
   --trunk:#8b6a4e; --trunk2:#6e523b; --leaf:#5fb88a; --leaf2:#3f9a6f; --can1:#2f8a62; --can2:#226b4b; --can3:#46a678;
-  --web:#1fa88f; --auto:#e5a22b; --infra:#e0675a;
+  --web:#14806c; --auto:#e5a22b; --infra:#e0675a; --special:#8a5cc7;
   --shadow:0 1px 2px rgba(0,0,0,.05),0 10px 28px rgba(19,32,30,.08);
 }
 @media (prefers-color-scheme: dark){
   :root{ --bg:#0c1413; --bg2:#111c1b; --card:#16231f; --text:#e8f2ef; --muted:#9db1ad; --line:#24362f;
     --accent:#3fd0b5; --accent-ink:#7fe6d3; --trunk:#a07b5b; --trunk2:#80614a; --leaf:#4aa77a; --leaf2:#2f8460; --can1:#2c7a57; --can2:#22654a; --can3:#358a63;
-    --web:#3fd0b5; --auto:#f0b544; --infra:#f07f72; --shadow:0 1px 2px rgba(0,0,0,.35),0 10px 28px rgba(0,0,0,.3); }
+    --web:#3fd0b5; --auto:#f0b544; --infra:#f07f72; --special:#b38ef0; --shadow:0 1px 2px rgba(0,0,0,.35),0 10px 28px rgba(0,0,0,.3); }
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:72px}
@@ -29,13 +39,15 @@ a{color:inherit}
 /* nav */
 nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:16px}
-.brand{font-weight:800;text-decoration:none;letter-spacing:-.01em}
+.brand{display:inline-flex;align-items:center;font-weight:800;text-decoration:none;letter-spacing:-.01em}
+
+.brand .avatar{width:30px;height:30px;border-radius:50%;object-fit:cover;margin-right:10px;box-shadow:0 0 0 1.5px color-mix(in srgb,var(--accent) 55%,transparent);flex:none}
 .brand span{color:var(--accent)}
 .links{display:flex;gap:22px;align-items:center;font-size:.92rem}
 .links a{text-decoration:none;color:var(--muted)}
 .links a:hover{color:var(--text)}
 @media (max-width:720px){.links a:not(.btn){display:none}}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:999px;font-weight:600;font-size:.92rem;text-decoration:none;border:1px solid var(--line);background:var(--card);color:var(--text);cursor:pointer;font-family:inherit}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:0;font-weight:600;font-size:.92rem;text-decoration:none;border:1px solid var(--line);background:var(--card);color:var(--text);cursor:pointer;font-family:inherit}
 .btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
 @media (prefers-color-scheme: dark){.btn.primary{color:#062a24}}
 .links .btn{padding:7px 14px}
@@ -51,6 +63,15 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 .tree{position:relative;max-width:900px;margin:18px auto 0;padding:0 20px 10px}
 .canopy{position:relative;z-index:1;height:340px;margin:8px auto -44px;max-width:820px}
 .canopy svg{position:absolute;inset:0;width:100%;height:100%}
+.canopy > svg{z-index:0}
+.bird{position:absolute;z-index:-1;width:34px;height:31px;margin-left:-17px;transform:translateY(6px);pointer-events:none}
+.bird svg{display:block;width:100%;height:100%}
+.bird.flip svg{transform:scaleX(-1)}
+.bird.peek{animation:peek 3.6s ease-in-out forwards}
+@keyframes peek{0%{transform:translateY(6px)}14%{transform:translateY(-22px)}20%{transform:translateY(-19px)}30%{transform:translateY(-21px) rotate(-8deg)}46%{transform:translateY(-21px) rotate(-8deg)}54%{transform:translateY(-21px) rotate(9deg)}70%{transform:translateY(-21px) rotate(9deg)}78%{transform:translateY(-22px) rotate(0)}88%{transform:translateY(-20px)}100%{transform:translateY(6px)}}
+@media (max-width:720px){.bird{width:26px;height:24px;margin-left:-13px}}
+@media (prefers-reduced-motion:reduce){.bird{display:none}}
+
 .crown{position:relative;z-index:1;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;padding:44px 90px 30px}
 .crown .tagline{font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:.72rem;opacity:.8}
 .crown h1{font-size:clamp(1.9rem,4vw,2.7rem);font-weight:800;letter-spacing:-.025em;line-height:1.1;margin-top:6px}
@@ -59,13 +80,13 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 .crown .legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:-1px;box-shadow:0 0 0 2px rgba(255,255,255,.75)}
 .tier{display:grid;grid-template-columns:1fr 70px 1fr;position:relative}
 .trunk{position:relative;background:linear-gradient(90deg,var(--trunk2),var(--trunk) 45%,var(--trunk2));margin:0 18px}
-.trunk .year{position:absolute;top:58px;left:50%;transform:translate(-50%,-50%);background:var(--card);border:1px solid var(--line);color:var(--muted);font-size:.72rem;font-weight:700;padding:2px 8px;border-radius:999px;white-space:nowrap;z-index:2}
+.trunk .year{position:absolute;top:58px;left:50%;transform:translate(-50%,-50%);background:var(--card);border:1px solid var(--line);color:var(--muted);font-size:.72rem;font-weight:700;padding:2px 8px;border-radius:0;white-space:nowrap;z-index:2}
 .slot{position:relative;display:flex;padding:14px 0 30px;min-height:170px}
 .slot.left{justify-content:flex-end;padding-right:58px}
 .slot.right{justify-content:flex-start;padding-left:58px}
 .slot.empty{min-height:120px}
 /* branch */
-.slot:not(.empty)::before{content:"";position:absolute;top:96px;height:9px;width:150px;background:var(--trunk);border-radius:6px}
+.slot:not(.empty)::before{content:"";position:absolute;top:96px;height:9px;width:150px;background:var(--trunk);border-radius:0}
 .slot.left:not(.empty)::before{right:-18px;transform:rotate(11deg);transform-origin:right center}
 .slot.right:not(.empty)::before{left:-18px;transform:rotate(-11deg);transform-origin:left center}
 .leafy{position:absolute;top:60px;width:22px;height:14px;background:var(--leaf);border-radius:0 100% 0 100%}
@@ -76,18 +97,37 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 .slot.right .leafy.b{left:46px;transform:rotate(-20deg) scaleX(-1)}
 /* fruit */
 .fruit{all:unset;cursor:pointer;display:flex;flex-direction:column;align-items:center;text-align:center;width:230px;position:relative;z-index:3;--c:var(--web)}
-.fruit[data-cat=auto]{--c:var(--auto)} .fruit[data-cat=infra]{--c:var(--infra)}
+.fruit[data-cat=auto]{--c:var(--auto)} .fruit[data-cat=infra]{--c:var(--infra)} .fruit[data-cat=special]{--c:var(--special)}
+.fruit[data-cat=special] .orb{box-shadow:0 0 0 1px color-mix(in srgb,var(--c) 60%,transparent),0 0 0 6px color-mix(in srgb,var(--c) 22%,transparent),0 0 32px color-mix(in srgb,var(--c) 55%,transparent),inset 0 0 18px color-mix(in srgb,var(--c) 30%,transparent)}
+.badge{display:inline-block;font-size:.66rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--c);border-radius:0;padding:2px 9px;margin-bottom:5px}
+.slot.has-role:not(.empty){padding-bottom:var(--rolepb,64px)}
+.slot.low{padding-top:var(--low,60px)}
+.slot.low::before{top:calc(var(--low,60px) + 82px)}
+.slot.low .leafy{top:calc(var(--low,60px) + 46px)}
+.slot.low .leafy.b{top:calc(var(--low,60px) + 78px)}
+.slot.mid{padding-top:var(--mid,215px);margin-bottom:calc(var(--midmb,45px) * -1)}
+.slot.mid::before{top:calc(var(--mid,215px) + 82px)}
+.slot.mid .leafy{top:calc(var(--mid,215px) + 46px)}
+.slot.mid .leafy.b{top:calc(var(--mid,215px) + 78px)}
+.xlink{all:unset;cursor:pointer;display:inline-block;margin-top:8px;font-size:.85rem;font-weight:700;color:color-mix(in srgb,var(--c) 65%,var(--text));border-bottom:1.5px solid color-mix(in srgb,var(--c) 50%,transparent)}
+.xlink:hover,.xlink:focus-visible{border-bottom-color:var(--c)}
 .orb{position:relative;width:112px;height:112px;border-radius:50%;display:grid;place-items:center;
-  background:radial-gradient(circle at 32% 28%,color-mix(in srgb,var(--c) 30%,#fff) 0,color-mix(in srgb,var(--c) 70%,#fff) 35%,var(--c) 75%);
-  box-shadow:0 10px 22px color-mix(in srgb,var(--c) 35%,transparent),inset 0 -8px 16px rgba(0,0,0,.12);
+  background:radial-gradient(circle at 35% 28%,color-mix(in srgb,var(--c) 45%,#0d1b22) 0,color-mix(in srgb,var(--c) 22%,#0b151b) 55%,#081014 100%);
+  box-shadow:0 0 0 1px color-mix(in srgb,var(--c) 55%,transparent),0 10px 24px color-mix(in srgb,var(--c) 30%,transparent),inset 0 0 18px color-mix(in srgb,var(--c) 25%,transparent);
   transform-origin:50% -14px;transition:transform .2s ease,box-shadow .2s ease}
-.orb::before{content:"";position:absolute;top:-16px;left:50%;width:4px;height:18px;background:var(--trunk2);border-radius:2px;transform:translateX(-50%) rotate(8deg)}
+.orb::before{content:"";position:absolute;top:-16px;left:50%;width:4px;height:18px;background:var(--trunk2);border-radius:0;transform:translateX(-50%) rotate(8deg)}
 .orb::after{content:"";position:absolute;top:-14px;left:54%;width:20px;height:11px;background:var(--leaf);border-radius:0 100% 0 100%;transform:rotate(-20deg)}
 .orb svg{width:46px;height:46px;color:#fff;filter:drop-shadow(0 1px 1px rgba(0,0,0,.2))}
-.fruit .label{margin-top:12px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 14px;box-shadow:var(--shadow);transition:border-color .2s ease}
+.orb svg.sk{width:68px;height:68px;overflow:visible;color:color-mix(in srgb,var(--c) 30%,#eafcff);filter:drop-shadow(0 0 1.5px color-mix(in srgb,var(--c) 80%,#fff)) drop-shadow(0 0 5px color-mix(in srgb,var(--c) 70%,transparent))}
+.fruit .label{position:relative;margin-top:12px;background:var(--card);border:1px solid var(--line);border-radius:0;padding:10px 14px 24px;box-shadow:var(--shadow);transition:border-color .2s ease}
 .fruit h3{font-size:.98rem;letter-spacing:-.01em;line-height:1.3}
 .fruit .res{font-size:.8rem;color:var(--muted);margin-top:3px}
-.fruit .go{font-size:.78rem;font-weight:700;color:var(--accent-ink);margin-top:5px}
+.fruit .tools{display:flex;flex-wrap:wrap;justify-content:center;gap:4px;margin-top:7px;max-width:210px}
+.fruit .tools span{font-size:.7rem;font-weight:600;color:var(--muted);background:var(--bg2);border:1px solid var(--line);border-radius:0;padding:1px 8px;white-space:nowrap}
+.fruit .go{position:absolute;right:7px;bottom:7px;width:20px;height:20px;border-radius:50%;display:grid;place-items:center;color:color-mix(in srgb,var(--c) 70%,var(--muted));background:color-mix(in srgb,var(--c) 10%,transparent);border:1px solid color-mix(in srgb,var(--c) 30%,transparent);transition:transform .25s ease,background .2s ease,color .2s ease}
+.fruit .go svg{width:12px;height:12px}
+.fruit:hover .go,.fruit:focus-visible .go{transform:translateY(1px);background:var(--c);color:#fff;border-color:var(--c)}
+.fruit.active .go{transform:rotate(180deg)}
 .fruit:hover .orb,.fruit:focus-visible .orb{transform:scale(1.08)}
 .fruit:hover .label,.fruit:focus-visible .label{border-color:var(--c)}
 .fruit:focus-visible .label{outline:2px solid var(--c);outline-offset:2px}
@@ -106,33 +146,60 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 .rootlabel b{color:var(--text)}
 
 /* screens gallery inside an opened project */
-.shots{position:relative;z-index:3;display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:18px}
-.shot{margin:0;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:8px;box-shadow:var(--shadow);cursor:zoom-in;opacity:0;transform:translateY(-8px);transition:opacity .35s ease,transform .35s ease,border-color .2s ease;font:inherit;color:inherit;text-align:center}
+.shots{position:relative;z-index:3;display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:26px;padding-top:16px;border-top:1px solid color-mix(in srgb,var(--c) 28%,var(--line))}
+.shots::before{content:"Gallery";flex-basis:100%;text-align:center;font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.09em;color:color-mix(in srgb,var(--c) 60%,var(--text));margin-bottom:-2px}
+.shot{margin:0;background:var(--card);border:1px solid var(--line);border-radius:0;padding:8px;box-shadow:var(--shadow);cursor:zoom-in;opacity:0;transform:translateY(-8px);transition:opacity .35s ease,transform .35s ease,border-color .2s ease;font:inherit;color:inherit;text-align:center}
 .shot.show{opacity:1;transform:none}
 .shot:hover,.shot:focus-visible{border-color:var(--c)}
-.shot img{display:block;height:170px;width:auto;border-radius:8px}
+.shot img{display:block;height:170px;width:auto;border-radius:0}
 .shot span{display:block;font-size:.76rem;color:var(--muted);margin-top:6px}
 .shots-note{position:relative;z-index:3;text-align:center;font-size:.74rem;color:var(--muted);margin-top:8px}
 dialog.lb{margin:auto;border:none;padding:0;background:transparent;max-width:96vw;overflow:visible}
 dialog.lb::backdrop{background:rgba(5,10,9,.82)}
-dialog.lb img{display:block;max-width:94vw;max-height:84vh;border-radius:10px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+dialog.lb .lb-fig{position:relative;display:block;width:max-content;max-width:94vw;margin:0 auto}
+dialog.lb img{display:block;max-width:94vw;max-height:72vh;border-radius:0;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.hot{all:unset;position:absolute;transform:translate(-50%,-50%);width:24px;height:24px;border-radius:50%;cursor:pointer;z-index:2;opacity:0;animation:hotin .4s ease forwards}
+.hot i{position:absolute;inset:0;border-radius:50%;background:#2ebfa5;box-shadow:0 0 0 3px #fff,0 4px 14px rgba(0,0,0,.45);display:grid;place-items:center;transition:transform .2s ease,background .2s ease}
+.hot i::before,.hot i::after{content:"";position:absolute;background:#04201b;border-radius:0}
+.hot i::before{width:10px;height:2.5px}.hot i::after{width:2.5px;height:10px;transition:transform .2s ease}
+.hot::before,.hot::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #2ebfa5;animation:ripple 2s ease-out infinite;pointer-events:none}
+.hot::after{animation-delay:1s}
+.hot:hover i,.hot:focus-visible i{transform:scale(1.15)}
+.hot:focus-visible{outline:2px solid #fff;outline-offset:4px}
+.hot.on i{background:#fff}.hot.on i::after{transform:scaleY(0)}
+.hot.on::before,.hot.on::after,.hot.seen::before,.hot.seen::after{animation:none;opacity:0}
+@keyframes ripple{0%{transform:scale(1);opacity:.9}100%{transform:scale(2.6);opacity:0}}
+@keyframes hotin{from{opacity:0;transform:translate(-50%,-50%) scale(.3)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+.tip{position:absolute;z-index:3;width:max-content;max-width:min(250px,70vw);background:#0f1b19;color:#eef6f4;font-size:.84rem;line-height:1.4;padding:9px 12px;border-radius:0;box-shadow:0 10px 30px rgba(0,0,0,.45);border:1px solid rgba(46,191,165,.5);transform:translate(-50%,calc(-100% - 22px));animation:tipin .18s ease;pointer-events:none}
+.tip.below{transform:translate(-50%,22px)}
+.tip.l{transform:translate(-14px,calc(-100% - 22px))}.tip.l.below{transform:translate(-14px,22px)}
+.tip.r{transform:translate(calc(-100% + 14px),calc(-100% - 22px))}.tip.r.below{transform:translate(calc(-100% + 14px),22px)}
+@keyframes tipin{from{opacity:0;margin-top:6px}to{opacity:1;margin-top:0}}
+.lb-hint{color:rgba(255,255,255,.75);text-align:center;font-size:.8rem;margin-top:4px}
+.lb-hint:empty{display:none}
+.lb-tag{position:absolute;left:0;bottom:0;z-index:3;padding:5px 10px;font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:rgba(10,16,15,.78);border-top:1px solid rgba(255,255,255,.18);border-right:1px solid rgba(255,255,255,.18);pointer-events:none}
+.lb-tag:empty{display:none}
+@media (max-width:640px){.hot{width:20px;height:20px}.hot i::before{width:8px}.hot i::after{height:8px}}
+@media (prefers-reduced-motion:reduce){.hot::before,.hot::after{animation:none;opacity:0}}
 dialog.lb p{color:#fff;text-align:center;margin-top:10px;font-size:.9rem}
-dialog.lb button{position:absolute;top:-14px;right:-14px;width:34px;height:34px;border-radius:50%;border:none;background:#fff;color:#111;font-size:1.1rem;cursor:pointer}
+dialog.lb > button{position:absolute;top:10px;right:10px;z-index:10;width:34px;height:34px;border-radius:50%;border:none;background:rgba(255,255,255,.92);color:#111;font-size:1.2rem;line-height:1;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,.35)}
+dialog.lb > button:hover{background:#fff}
 @media (max-width:720px){.shot{width:100%}.shot img{height:auto;width:100%;max-height:420px;object-fit:contain}}
 
 /* role markers: height lines running from the trunk out toward the page edge */
 .has-role{position:relative}
-.roles{position:absolute;bottom:22px;display:flex;flex-direction:column;gap:14px;z-index:3;width:calc(50vw - 24px)}
+.roles{position:absolute;bottom:16px;display:flex;flex-direction:column;gap:12px;z-index:3;width:calc(50vw + 4px)}
 .slot.left .roles{right:-35px}
 .slot.right .roles{left:-35px}
-.role{display:flex;align-items:center}
-.role .tag{order:1;font-size:.78rem;color:var(--muted);background:var(--card);border:1px dashed color-mix(in srgb,var(--muted) 45%,transparent);border-radius:999px;padding:3px 11px;white-space:nowrap}
-.role .tag b{color:var(--text);font-weight:700}
-.role::after{content:"";order:2;flex:1;min-width:24px;border-top:2px dashed color-mix(in srgb,var(--muted) 50%,transparent)}
-.role::before{content:"";order:3;flex:none;width:10px;height:10px;margin-right:-7px;border-radius:50%;background:var(--card);border:2px solid var(--muted)}
-.slot.right .role .tag{order:3}
-.slot.right .role::before{order:1;margin-right:0;margin-left:-7px}
-body{overflow-x:clip}
+.roles.at-top{top:262px;bottom:auto}
+.role{position:relative;display:block}
+.role .rt{position:relative;display:block;font-size:.8rem;color:var(--muted);padding:0 6px 5px;border-bottom:1.5px solid color-mix(in srgb,var(--muted) 40%,transparent);white-space:nowrap}
+.role .rt b{color:var(--text);font-weight:700}
+.role .rd{display:block;font-size:.74rem;font-weight:600;color:var(--muted);padding:4px 6px 0;letter-spacing:.02em}
+.role .rt::after{content:"";position:absolute;bottom:-6.5px;width:9px;height:9px;border-radius:50%;background:var(--card);border:2px solid var(--muted)}
+.slot.left .role{text-align:left}.slot.left .role .rt,.slot.left .role .rd{padding-left:20px}.slot.left .role .rt::after{right:-6px}
+.slot.right .role{text-align:right}.slot.right .role .rt,.slot.right .role .rd{padding-right:20px}.slot.right .role .rt::after{left:-6px}
+html,body{overflow-x:clip}
 
 /* mobile: trunk on the left, fruit on the right */
 @media (max-width:720px){
@@ -148,34 +215,43 @@ body{overflow-x:clip}
   .slot.left,.slot.right{grid-column:2;justify-content:flex-start;padding:10px 0 26px 46px}
   .slot.empty{display:none}
   .slot.empty.has-role{display:block;order:3;min-height:0;padding:0 0 22px}
-  .slot.left .roles,.slot.right .roles{position:relative;left:auto;right:auto;bottom:auto;width:calc(100% + 26px);margin-left:-26px}
-  .slot.left .role .tag,.slot.right .role .tag{order:3;white-space:normal}
-  .slot.left .role::before,.slot.right .role::before{order:1;margin-right:0;margin-left:-7px}
+  .slot.first{order:-1}
+  .slot.mid{margin-bottom:0}
+  .roles.at-top{top:auto !important}
+  .slot.has-role:not(.empty){flex-direction:column;align-items:flex-start;gap:22px;padding-bottom:22px}
+  .slot.left .roles,.slot.right .roles{position:relative;left:auto;right:auto;bottom:auto;width:calc(100% + 50px);margin-left:-26px}
+  .slot.left .role,.slot.right .role{text-align:left}
+  .slot.left .role .rt,.slot.right .role .rt{white-space:normal;padding-left:18px}
+  .slot.left .role .rd,.slot.right .role .rd{padding-left:18px}
+  .slot.left .role .rt::after,.slot.right .role .rt::after{left:-6px;right:auto}
   .slot.left:not(.empty)::before,.slot.right:not(.empty)::before{left:-14px;right:auto;top:66px;width:72px;transform:rotate(-9deg);transform-origin:left center}
   .slot.left .leafy,.slot.right .leafy{top:40px;left:20px;right:auto;transform:rotate(30deg) scaleX(-1)}
   .slot.left .leafy.b,.slot.right .leafy.b{top:66px;left:30px;transform:rotate(-20deg) scaleX(-1)}
   .fruit{width:auto;flex-direction:row;align-items:center;gap:14px;text-align:left}
   .orb{width:84px;height:84px;flex:none}
   .orb svg{width:34px;height:34px}
+  .orb svg.sk{width:52px;height:52px}
   .fruit .label{margin-top:0}
+  .fruit .tools{justify-content:flex-start}
+  .fruit .label{padding-right:34px;padding-bottom:12px}
   .roots{margin-left:0;max-width:200px;height:80px}
   .rootlabel{text-align:left;padding-left:10px}
 }
 
 /* bloom: project details growing out of a fruit */
 .tags{display:flex;flex-wrap:wrap;gap:6px}
-.tag{font-size:.76rem;padding:3px 10px;border-radius:999px;background:var(--bg2);border:1px solid var(--line);color:var(--muted)}
+.tag{font-size:.76rem;padding:3px 10px;border-radius:0;background:var(--bg2);border:1px solid var(--line);color:var(--muted)}
 .vines{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;z-index:2;overflow:visible}
 .vines path{fill:none;stroke:var(--c);stroke-width:3;stroke-linecap:round;opacity:.9}
 .bloom{position:relative;padding:44px 0 26px}
 .bloom::before{content:"";position:absolute;top:0;bottom:0;left:50%;width:34px;transform:translateX(-50%);background:linear-gradient(90deg,var(--trunk2),var(--trunk) 45%,var(--trunk2));z-index:0}
-.bloom-panel{position:relative;z-index:1;background:color-mix(in srgb,var(--c) 9%,var(--bg));border:1px solid color-mix(in srgb,var(--c) 30%,var(--line));border-radius:20px;padding:26px 20px 18px;box-shadow:inset 0 1px 0 rgba(255,255,255,.04)}
+.bloom-panel{position:relative;z-index:1;background:color-mix(in srgb,var(--c) 9%,var(--bg));border:1px solid color-mix(in srgb,var(--c) 30%,var(--line));border-radius:0;padding:26px 20px 18px;box-shadow:inset 0 1px 0 rgba(255,255,255,.04)}
 .nodes{position:relative;z-index:3;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px;align-items:start}
-.node{position:relative;background:var(--card);border:1px solid var(--line);border-top:4px solid var(--c);border-radius:14px;padding:0 16px 16px;overflow:visible;box-shadow:var(--shadow);opacity:0;transform:translateY(-12px) scale(.95);transition:opacity .35s ease,transform .35s ease}
+.node{position:relative;background:var(--card);border:1px solid var(--line);border-top:4px solid var(--c);border-radius:0;padding:0 16px 16px;overflow:visible;box-shadow:var(--shadow);opacity:0;transform:translateY(-12px) scale(.95);transition:opacity .35s ease,transform .35s ease}
 .node.show{opacity:1;transform:none}
 .node::before{content:"";position:absolute;top:-11px;left:50%;width:12px;height:12px;border-radius:50%;background:var(--c);border:3px solid var(--card);transform:translateX(-50%)}
-.node h4{display:flex;align-items:center;gap:8px;margin:0 -16px 12px;padding:12px 16px 10px;font-size:.88rem;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:color-mix(in srgb,var(--c) 60%,var(--text));background:color-mix(in srgb,var(--c) 12%,var(--card));border-bottom:1px solid color-mix(in srgb,var(--c) 25%,var(--line));border-radius:10px 10px 0 0}
-.node h4::before{content:"";width:8px;height:8px;border-radius:2px;background:var(--c);flex:none}
+.node h4{display:flex;align-items:center;gap:8px;margin:0 -16px 12px;padding:12px 16px 10px;font-size:.88rem;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:color-mix(in srgb,var(--c) 60%,var(--text));background:color-mix(in srgb,var(--c) 12%,var(--card));border-bottom:1px solid color-mix(in srgb,var(--c) 25%,var(--line));border-radius:0}
+.node h4::before{content:"";width:8px;height:8px;border-radius:0;background:var(--c);flex:none}
 .node.ref h4{background:color-mix(in srgb,var(--text) 6%,var(--card));color:var(--muted);border-bottom-color:var(--line)}
 .node.ref h4::before{display:none}
 .node h4[data-step]::before{content:attr(data-step);width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:.74rem;font-weight:800;letter-spacing:0;color:var(--card)}
@@ -184,7 +260,7 @@ body{overflow-x:clip}
 .node li{margin-bottom:3px}
 .node .tags{margin-bottom:8px}
 .bloom-foot{position:relative;z-index:3;display:flex;justify-content:center;gap:10px;align-items:center;margin-top:16px}
-.bloom-foot .when{font-size:.8rem;color:var(--muted);background:var(--card);border:1px solid var(--line);padding:4px 12px;border-radius:999px}
+.bloom-foot .when{font-size:.8rem;color:var(--muted);background:var(--card);border:1px solid var(--line);padding:4px 12px;border-radius:0}
 .bloom-foot .btn{padding:6px 14px;font-size:.82rem}
 .fruit.active .label{border-color:var(--c);box-shadow:0 0 0 3px color-mix(in srgb,var(--c) 30%,transparent),var(--shadow)}
 .fruit.active .orb{transform:scale(1.08);animation:none}
@@ -202,17 +278,250 @@ section{padding:56px 0}
 .alt{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 h2{font-size:clamp(1.5rem,3vw,2rem);letter-spacing:-.02em;margin-bottom:8px}
 .sub{color:var(--muted);margin-bottom:18px;max-width:68ch}
-.timeline{border-left:2px solid var(--line);margin-left:6px}
-.job{position:relative;padding:0 0 22px 22px}
-.job:before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--accent)}
-.job h3{font-size:1.02rem}
-.job .when{color:var(--muted);font-size:.88rem}
+.timeline{position:relative;padding:6px 0 10px 64px}
+.timeline::before{content:"";position:absolute;left:21px;top:0;bottom:0;width:1.8px;border-radius:0;background:#5fb88a;opacity:.55}
+.job{position:relative;margin-bottom:14px;padding:12px 16px;background:var(--card);border:1px solid var(--line);border-radius:0;box-shadow:var(--shadow)}
+.job::after{content:"";position:absolute;left:-42px;top:22px;width:42px;height:0;border-top:1.5px solid color-mix(in srgb,var(--muted) 30%,transparent)}
+.job.dis::after{border-top-color:color-mix(in srgb,var(--leaf) 55%,transparent)}
+.job h3{font-size:1.02rem;display:inline}
+.kw{font-weight:550;color:color-mix(in srgb,var(--text) 55%,var(--muted))}
+.job .jd{margin:8px 0 2px;padding-left:18px;color:var(--muted);font-size:.92rem}
+.job .jd li{margin-bottom:4px;max-width:78ch}
+.job .jd li::marker{color:color-mix(in srgb,var(--leaf) 70%,var(--muted))}
+.job .when{color:var(--muted);font-size:.88rem;display:inline}
+.job .when::before{content:"\00b7";margin:0 8px;color:color-mix(in srgb,var(--muted) 60%,transparent)}
+.job .yrs{float:right;margin:2px 0 0 16px;color:var(--muted);font-size:.85rem;font-weight:600;white-space:nowrap}
+.job h3+.when+p{margin-top:4px}
+@media (max-width:560px){.job h3{display:block}.job .when{display:block}.job .when::before{display:none}}
 .job p{color:var(--muted);font-size:.95rem;max-width:70ch}
 .skills{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
 @media (max-width:720px){.skills{grid-template-columns:1fr}}
-.skill{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
-.skill b{display:block;margin-bottom:6px}
+.about{display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start}
+@property --sx{syntax:'<length>';inherits:false;initial-value:0px}
+@property --sy{syntax:'<length>';inherits:false;initial-value:0px}
+@property --sr{syntax:'<length>';inherits:false;initial-value:140px}
+.tour-spot{position:absolute;left:0;top:0;width:100%;z-index:55;pointer-events:none;opacity:0;background:radial-gradient(circle at var(--sx) var(--sy),rgba(6,14,12,0) 0,rgba(6,14,12,0) var(--sr),rgba(6,14,12,.6) calc(var(--sr) + 110px));transition:--sx .45s ease,--sy .45s ease,--sr .45s ease,opacity .3s ease}
+.tour-spot.on{opacity:1}
+.tour.detail{position:fixed;left:50%;top:78px;bottom:auto;transform:translateX(-50%);width:min(880px,calc(100vw - 24px));max-height:calc(100vh - 96px);display:flex;flex-direction:column;padding:14px 18px 14px}
+.tour.detail::before{display:none}
+.tour-detail{overflow:auto;margin:0 -18px;padding:4px 18px 6px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.tour-detail[hidden]{display:none}
+html.tour-lock,html.tour-lock body{overflow:hidden;overscroll-behavior:none}
+.tour-detail{overscroll-behavior:contain}
+.td-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 22px;margin:12px 0 4px}
+.td-sec h5{display:flex;align-items:center;gap:7px;font-size:.7rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:color-mix(in srgb,var(--c) 65%,var(--text));margin-bottom:6px}
+.td-sec h5 b{display:grid;place-items:center;width:18px;height:18px;border-radius:50%;background:var(--c);color:#fff;font-size:.66rem;letter-spacing:0}
+.td-sec p,.td-sec li{font-size:.84rem;line-height:1.5;color:var(--muted)}
+.td-sec ul{padding-left:16px}.td-sec li{margin-bottom:3px}
+.td-sec .tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:6px}
+.td-sec .xlink{display:none}
+.td-shots{display:flex;gap:10px;overflow-x:auto;padding:6px 0 10px}
+.td-shots button{all:unset;cursor:zoom-in;flex:none;width:170px;background:var(--bg2);border:1px solid var(--line);padding:5px}
+.td-shots img{display:block;width:100%;height:96px;object-fit:cover;object-position:top}
+.td-gh{margin-top:12px}
+.td-shots{border-bottom:1px dashed color-mix(in srgb,var(--c) 35%,var(--line))}
+.td-gh h5{display:flex;align-items:center;gap:8px;font-size:.7rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:color-mix(in srgb,var(--c) 65%,var(--text));margin:0 0 2px}
+.td-gh h5 span{font-size:.66rem;letter-spacing:.04em;font-weight:700;color:var(--muted);text-transform:none;background:var(--bg2);border:1px solid var(--line);padding:1px 7px}
+.td-gh p{font-size:.78rem;color:var(--muted);margin:0}
+.td-shots button{position:relative}
+.td-shots .zm{position:absolute;right:9px;top:9px;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:color-mix(in srgb,var(--c) 72%,#000);color:#fff;box-shadow:0 2px 8px rgba(0,0,0,.3);transition:transform .2s ease}
+.td-shots .zm svg{width:14px;height:14px}
+.td-shots button:hover .zm,.td-shots button:focus-visible .zm{transform:scale(1.12)}
+.td-shots button:hover img{filter:brightness(1.05)}
+.td-shots .cap{display:block;font-size:.72rem;color:var(--muted);margin-top:4px}
+.td-shots button:hover,.td-shots button:focus-visible{border-color:var(--c)}
+.tour.detail .tour-text{display:none}
+
+.tour.detail{width:min(940px,calc(100vw - 24px))}
+.tour.detail .tour-top{padding-bottom:12px}
+.tour.detail .tour-title{font-size:1.15rem}
+.tour-detail{padding:14px 18px 16px;background:color-mix(in srgb,var(--c) 4%,var(--card))}
+.td-bubble{display:none}
+@media (min-width:1180px){
+  .tour.detail .td-bubble:not([hidden]){display:block;position:absolute;top:12px;right:calc(100% + 22px);width:min(330px,calc(100vw - 100% - 90px));background:var(--card);border:1px solid var(--line);border-radius:18px 18px 4px 18px;padding:14px 16px;font-size:.88rem;line-height:1.6;color:var(--text);box-shadow:0 18px 50px rgba(0,0,0,.35),0 0 0 1px color-mix(in srgb,var(--c) 30%,transparent)}
+  .tour.detail .td-bubble::after{content:"";position:absolute;top:22px;right:-9px;width:16px;height:16px;background:var(--card);border-right:1px solid var(--line);border-top:1px solid var(--line);transform:rotate(45deg)}
+  .tour.detail .td-bubble b{display:block;font-size:.66rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:color-mix(in srgb,var(--c) 65%,var(--text));margin-bottom:4px}
+  .tour.detail .td-quote{display:none}
+}
+.td-meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.td-meta span{font-size:.7rem;font-weight:700;letter-spacing:.04em;padding:3px 9px;border:1px solid var(--line);background:var(--card);color:var(--muted)}
+.td-meta .td-cat{color:#fff;background:color-mix(in srgb,var(--c) 72%,#000);border-color:transparent;text-transform:uppercase;letter-spacing:.08em}
+.td-quote{margin:0 0 16px;padding:10px 14px;border-left:3px solid var(--c);background:var(--card);font-size:.88rem;line-height:1.6;color:var(--text);font-style:italic}
+.td-block{background:var(--card);border:1px solid var(--line);padding:12px 14px;margin-bottom:14px}
+.td-block h5{display:flex;align-items:baseline;gap:10px;margin:0 0 8px;font-size:.72rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:color-mix(in srgb,var(--c) 65%,var(--text))}
+.td-block h5 em{font-style:normal;font-weight:600;letter-spacing:.02em;text-transform:none;color:var(--muted);font-size:.74rem}
+.td-gallery .td-shots{border:none;padding:2px 0 2px}
+.td-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:14px}
+.td-card{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--c);padding:12px 14px}
+.td-card h5{display:flex;align-items:center;gap:8px;font-size:.72rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:color-mix(in srgb,var(--c) 65%,var(--text));margin:0 0 8px}
+.td-card h5 b{display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:color-mix(in srgb,var(--c) 72%,#000);color:#fff;font-size:.68rem;letter-spacing:0}
+.td-card p,.td-card li,.td-tech p{font-size:.83rem;line-height:1.55;color:var(--muted)}
+.td-card ul{padding-left:16px;margin:0}.td-card li{margin-bottom:5px}
+.td-card .xlink,.td-tech .xlink{display:none}
+.td-tech .tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
+.td-tech p{margin:0}
+@media (max-width:760px){.td-cards{grid-template-columns:1fr}}
+@media (max-width:640px){.td-grid{grid-template-columns:1fr}.tour.detail{top:66px;max-height:calc(100vh - 80px)}}
+#tour{box-shadow:0 24px 70px rgba(0,0,0,.45),0 0 0 1px color-mix(in srgb,var(--accent) 35%,transparent);border-top:3px solid var(--accent)}
+#flows{--auto:#0f6cbd;--pp:#742774}
+@media (prefers-color-scheme: dark){#flows{--auto:#4c9bf0;--pp:#c27ec1}}
+#flows{padding-top:64px;padding-bottom:64px;background:linear-gradient(180deg,color-mix(in srgb,var(--auto) 8%,var(--bg)),color-mix(in srgb,var(--pp) 5%,var(--bg)));border-top:1px solid color-mix(in srgb,var(--auto) 30%,var(--line));border-bottom:1px solid var(--line)}
+.fl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;margin-top:18px}
+.fl-card{all:unset;box-sizing:border-box;cursor:pointer;position:relative;display:flex;flex-direction:column;gap:8px;background:var(--card);border:1px solid var(--line);border-top:3px solid var(--auto);padding:14px 16px;box-shadow:var(--shadow);transition:border-color .2s ease,transform .2s ease}
+.fl-card:hover,.fl-card:focus-visible{border-color:var(--auto);transform:translateY(-2px)}
+.fl-card.on{border-color:var(--auto);box-shadow:0 0 0 3px color-mix(in srgb,var(--auto) 25%,transparent),var(--shadow)}
+.fl-card::before{content:"";position:absolute;left:-1px;right:-1px;top:-3px;height:3px;background:linear-gradient(90deg,var(--auto),var(--pp))}
+.fl-card h3{font-size:1rem}
+.fl-card .proj{font-size:.68rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:color-mix(in srgb,var(--auto) 70%,var(--text))}
+.fl-card p{font-size:.86rem;color:var(--muted);line-height:1.5}
+.fl-card .trig{font-size:.76rem;color:var(--muted)}
+.fl-card .trig b{color:var(--text);font-weight:600}
+.fl-apps{display:flex;flex-wrap:wrap;gap:5px;margin-top:auto}
+.fl-app{display:inline-flex;align-items:center;gap:6px;font-size:.7rem;font-weight:600;color:var(--muted);background:var(--bg2);border:1px solid var(--line);padding:2px 8px}
+.fl-app i{width:8px;height:8px;background:var(--ac)}
+.fl-panel{margin-top:16px;background:color-mix(in srgb,var(--auto) 6%,var(--bg));border:1px solid color-mix(in srgb,var(--auto) 30%,var(--line));border-top:3px solid var(--pp);padding:20px}
+.fl-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 16px;margin-bottom:16px}
+.fl-head h3{font-size:1.15rem}
+.fl-head p{color:var(--muted);font-size:.9rem;max-width:70ch}
+.fl-legend{display:flex;flex-wrap:wrap;gap:5px}
+.fl-close{all:unset;cursor:pointer;font-size:.82rem;font-weight:700;color:var(--muted)}
+.fl-close:hover{color:var(--text)}
+.fl-detail{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px;margin-top:18px;padding-top:18px;border-top:1px dashed color-mix(in srgb,var(--auto) 35%,var(--line))}
+.fl-detail h4{font-size:.72rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:color-mix(in srgb,var(--auto) 70%,var(--text));margin:0 0 8px}
+.fl-detail h4 span{font-weight:600;letter-spacing:0;text-transform:none;color:var(--muted)}
+.fl-detail ul{padding-left:18px;margin:0 0 16px}
+.fl-detail li{font-size:.86rem;line-height:1.55;color:var(--muted);margin-bottom:6px}
+.fl-detail li b{color:var(--text);font-weight:600}
+.fl-anat{list-style:none;padding:0;margin:0;display:grid;gap:4px;counter-reset:a}
+.fl-anat li{counter-increment:a;display:flex;gap:10px;align-items:baseline;background:var(--card);border:1px solid var(--line);padding:6px 10px;margin:0}
+.fl-anat li::before{content:counter(a);font-size:.7rem;font-weight:800;color:#fff;background:var(--pp);min-width:18px;height:18px;display:grid;place-items:center}
+.fl-anat b{font-size:.8rem;color:var(--text);min-width:90px}
+.fl-anat span{font-size:.78rem;color:var(--muted)}
+.fl-code{margin:0;background:#101624;color:#dde6f5;border:1px solid var(--line);padding:14px 16px;overflow:auto;font:12.5px/1.55 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;max-height:520px}
+@media (max-width:820px){.fl-detail{grid-template-columns:1fr}}
+.fl-chart{overflow-x:auto;padding:4px 2px 8px}
+.fl-chart>.fl-seq{width:max-content;margin:0 auto}
+.fl-hint{display:none;font-size:.74rem;color:var(--muted);margin:-6px 0 10px}
+@media (max-width:640px){.fl-hint{display:block}}
+.fl-seq{display:flex;flex-direction:column;align-items:center;min-width:min-content}
+.fl-seq>*+*{margin-top:22px;position:relative}
+.fl-seq>*+*::before{content:"";position:absolute;left:50%;top:-22px;height:22px;border-left:1.5px solid color-mix(in srgb,var(--muted) 45%,transparent)}
+.fl-seq>*+*::after{content:"";position:absolute;left:50%;top:-7px;width:7px;height:7px;border-right:1.5px solid color-mix(in srgb,var(--muted) 60%,transparent);border-bottom:1.5px solid color-mix(in srgb,var(--muted) 60%,transparent);transform:translateX(-50%) rotate(45deg)}
+.fl-step{width:260px;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--ac);padding:8px 12px;box-shadow:var(--shadow)}
+.fl-step .k{display:block;font-size:.64rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--ac);filter:brightness(1.15)}
+.fl-step b{display:block;font-size:.86rem;line-height:1.35}
+.fl-step small{display:block;font-size:.74rem;color:var(--muted);line-height:1.4;margin-top:2px}
+.fl-step.trig{border:1px solid var(--ac);border-left-width:4px;background:color-mix(in srgb,var(--ac) 8%,var(--card))}
+.fl-cond{display:flex;flex-direction:column;align-items:center}
+.fl-q{width:260px;text-align:center;padding:8px 12px;font-size:.84rem;font-weight:700;background:var(--card);border:1.5px dashed color-mix(in srgb,var(--muted) 55%,transparent);box-shadow:var(--shadow)}
+.fl-q::before{content:"IF";display:block;font-size:.62rem;letter-spacing:.1em;color:var(--muted)}
+.fl-br{display:flex;gap:0;padding-top:16px;position:relative;align-items:flex-start}
+.fl-br::before{content:"";position:absolute;left:50%;top:0;height:16px;border-left:1.5px solid color-mix(in srgb,var(--muted) 45%,transparent)}
+.fl-arm{display:flex;flex-direction:column;align-items:center;position:relative;padding:14px 9px 0}
+.fl-arm:first-child{background:linear-gradient(to right,transparent 50%,color-mix(in srgb,var(--muted) 45%,transparent) 50%) top/100% 1.5px no-repeat}
+.fl-arm:last-child{background:linear-gradient(to left,transparent 50%,color-mix(in srgb,var(--muted) 45%,transparent) 50%) top/100% 1.5px no-repeat}
+.fl-arm:only-child{background:none}
+.fl-arm::before{content:"";position:absolute;left:50%;top:0;height:14px;border-left:1.5px solid color-mix(in srgb,var(--muted) 45%,transparent)}
+.fl-arm>.lbl{font-size:.66rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:1px 7px;margin-bottom:8px;position:relative;z-index:1}
+.fl-arm.y>.lbl{color:#fff;background:#2c7a57}.fl-arm.n>.lbl{color:#fff;background:#8b4a43}
+.fl-arm .none{font-size:.76rem;color:var(--muted);font-style:italic;padding:6px 0}
+.fl-loop{border:1.5px solid color-mix(in srgb,var(--muted) 35%,transparent);background:color-mix(in srgb,var(--text) 3%,transparent);padding:10px 14px 14px;display:flex;flex-direction:column;align-items:center}
+.fl-loop>.lbl{align-self:flex-start;font-size:.7rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.fl-loop>.lbl::before{content:"\21BB  "}
+@media (max-width:640px){.fl-step,.fl-q{width:220px}.fl-panel{padding:14px 10px}}
+.tour-btn{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:8px;margin-top:16px;padding:7px 15px 7px 11px;font-size:.82rem;font-weight:700;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.45);transition:background .2s ease}
+.tour-btn svg{position:static;inset:auto;width:14px;height:14px}
+.tour-btn:hover,.tour-btn:focus-visible{background:rgba(255,255,255,.26)}
+.tour-btn:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.tour{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:60;width:min(620px,calc(100vw - 24px));background:var(--card);border:1px solid var(--line);box-shadow:0 18px 50px rgba(0,0,0,.28);padding:14px 16px 14px}
+.tour[hidden]{display:none}
+.tour-top{display:flex;align-items:center;gap:10px}
+.tour-top img{width:34px;height:34px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 1.5px color-mix(in srgb,var(--accent) 55%,transparent)}
+.tour-step{font-size:.68rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.tour-title{font-weight:800;font-size:.92rem;line-height:1.25}
+.tour-x{all:unset;cursor:pointer;margin-left:auto;font-size:1.4rem;line-height:1;color:var(--muted);padding:2px 6px}
+.tour-x:hover{color:var(--text)}
+.tour-text{margin:8px 0 10px;font-size:.84rem;line-height:1.5;color:var(--text)}
+.tour-bar{height:3px;background:var(--line);overflow:hidden}
+.tour-bar span{display:block;height:100%;width:0;background:var(--accent);transition:width .3s ease}
+.tour-ctl{display:flex;gap:8px;justify-content:flex-end;margin-top:12px}
+.tour-ctl .btn{padding:5px 12px;font-size:.78rem}
+.tour-ctl .btn[disabled]{opacity:.4;cursor:default}
+.tour.anchored{position:absolute;left:0;bottom:auto;transform:none;width:min(470px,calc(50vw - 70px))}
+.tour.anchored::before{content:"";position:absolute;top:34px;width:14px;height:14px;background:var(--card);border:1px solid var(--line);transform:rotate(45deg)}
+.tour.anchored.from-left::before{left:-8px;border-right:none;border-top:none}
+.tour.anchored.from-right::before{right:-8px;border-left:none;border-bottom:none}
+.tour-ctl .tour-more{margin-right:auto;font-weight:700;color:var(--accent-ink);border-color:color-mix(in srgb,var(--accent) 45%,var(--line))}
+.tour-more[hidden]{display:none}
+.tour-ctl .btn{white-space:nowrap}
+.tour-more .sm{display:none}
+@media (max-width:560px){.tour-more .lg{display:none}.tour-more .sm{display:inline}}
+.tour.docked{position:fixed;left:16px;top:72px;bottom:auto;transform:none;width:min(360px,calc(100vw - 24px));display:grid;grid-template-columns:1fr auto;align-items:center;gap:8px 12px;padding:10px 12px}
+.tour.docked .tour-top{grid-column:1 / -1;grid-row:1;padding-right:24px}
+.tour.docked .tour-x{position:absolute;top:6px;right:6px}
+.tour.docked .tour-text{display:none}
+
+.tour.docked .tour-ctl{grid-column:2;grid-row:2;margin:0}
+.tour.docked .tour-bar{grid-column:1 / -1;grid-row:3}
+.tour.docked #tour-play{display:none}
+@media (max-width:640px){.tour.docked{top:66px;left:12px}}
+.tour-ctl .tour-more:hover,.tour-ctl .tour-more:focus-visible{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 10%,var(--card))}
+body.touring .fruit:not(.spot){opacity:.35;transition:opacity .3s ease}
+body.touring .fruit.spot{opacity:1}
+body.touring .fruit.spot .label{border-color:var(--c);box-shadow:0 0 0 3px color-mix(in srgb,var(--c) 30%,transparent),var(--shadow)}
+
+@media (max-width:560px){.tour{bottom:10px;padding:12px}.tour-text{font-size:.86rem}#tour-play{margin-right:auto}}
+.me-wrap{cursor:pointer}
+.me-wrap:focus-visible{outline:2px solid var(--accent);outline-offset:6px;border-radius:50%}
+.hi{position:absolute;left:66%;top:-12px;z-index:3;background:var(--card);color:var(--text);font-weight:800;font-size:1rem;padding:8px 14px;border-radius:16px 16px 16px 4px;box-shadow:0 8px 24px rgba(0,0,0,.18),0 0 0 1px color-mix(in srgb,var(--accent) 40%,transparent);white-space:nowrap;pointer-events:none;transform-origin:0 100%;animation:hi 2.2s ease forwards}
+.hi::after{content:"";position:absolute;left:10px;bottom:-6px;width:12px;height:12px;background:var(--card);transform:rotate(45deg);box-shadow:1px 1px 0 color-mix(in srgb,var(--accent) 40%,transparent)}
+@keyframes hi{0%{opacity:0;transform:translateY(8px) scale(.4)}12%{opacity:1;transform:translateY(-4px) scale(1.08)}20%{transform:translateY(0) scale(1)}80%{opacity:1;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-10px) scale(.95)}}
+.me-wrap.wave .me{animation:wave .6s ease}
+@keyframes wave{0%,100%{transform:rotate(0)}25%{transform:rotate(-6deg)}75%{transform:rotate(6deg)}}
+@media (prefers-reduced-motion:reduce){.hi{animation:hiR 2.2s linear forwards}.me-wrap.wave .me{animation:none}@keyframes hiR{0%,85%{opacity:1}100%{opacity:0}}}
+.me-wrap{position:relative;display:block;width:max-content;margin-top:22px}
+.me-wrap.fruit-me::before{content:"";position:absolute;top:-20px;left:50%;width:3px;height:24px;background:var(--trunk2);border-radius:0;transform:translateX(-50%) rotate(8deg);z-index:1}
+.me-wrap.fruit-me::after{content:"";position:absolute;top:-17px;left:54%;width:28px;height:15px;background:var(--leaf);border-radius:0 100% 0 100%;transform:rotate(-20deg);z-index:1}
+.me{width:180px;height:180px;border-radius:50%;object-fit:cover;border:4px solid var(--card);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 45%,transparent),var(--shadow);margin-top:6px}
+@media (max-width:720px){.about{grid-template-columns:1fr;gap:18px}.me{width:120px;height:120px}}
+.roots-sec{background:linear-gradient(180deg,var(--bg2),color-mix(in srgb,var(--trunk) 7%,var(--bg2)))}
+.roots-sub{margin-top:4px}
+.rootgrid{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:22px}
+.rootlines{position:absolute;left:0;top:0;width:100%;height:120px;overflow:visible}
+.rootlines path{fill:none;stroke:color-mix(in srgb,var(--trunk2) 70%,transparent);stroke-width:5;stroke-linecap:round;vector-effect:non-scaling-stroke}
+.rootlines path.thin{stroke-width:2.5;opacity:.6}
+.rootitem{position:relative;text-align:center;padding:26px 28px 10px}
+.rootitem .rh{display:block}
+.rootitem .stamp{--c:var(--web);display:grid;place-items:center;width:56px;height:56px;margin:0 auto 10px;border-radius:50%;background:radial-gradient(circle at 35% 28%,color-mix(in srgb,var(--c) 45%,#0d1b22) 0,color-mix(in srgb,var(--c) 22%,#0b151b) 55%,#081014 100%);box-shadow:0 0 0 1px color-mix(in srgb,var(--c) 55%,transparent),0 6px 16px color-mix(in srgb,var(--c) 30%,transparent),inset 0 0 12px color-mix(in srgb,var(--c) 25%,transparent);pointer-events:none}
+.rootitem .stamp{position:relative;margin-top:12px}
+.rootitem .stamp::before{content:"";position:absolute;top:-10px;left:50%;width:3px;height:12px;background:var(--trunk2);border-radius:2px;transform:translateX(-50%) rotate(8deg)}
+.rootitem .stamp::after{content:"";position:absolute;top:-9px;left:54%;width:13px;height:7px;background:var(--leaf);border-radius:0 100% 0 100%;transform:rotate(-20deg)}
+.rootitem .stamp svg{width:32px;height:32px;overflow:visible;color:color-mix(in srgb,var(--c) 30%,#eafcff);filter:drop-shadow(0 0 1px color-mix(in srgb,var(--c) 80%,#fff)) drop-shadow(0 0 3px color-mix(in srgb,var(--c) 70%,transparent))}
+
+.rootitem .rtip{position:absolute;top:-7px;left:50%;width:14px;height:14px;border-radius:50%;transform:translateX(-50%);background:var(--leaf);box-shadow:0 0 0 4px color-mix(in srgb,var(--leaf) 22%,transparent)}
+.rootitem .kick{display:block;font-size:.7rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:color-mix(in srgb,var(--leaf2) 80%,var(--muted));margin:6px 0 6px}
+.rootitem h3{font-size:1.15rem;margin-bottom:2px}
+.rootitem .where{color:var(--muted);font-size:.9rem;margin-bottom:10px}
+.rootitem p{color:var(--muted);font-size:.93rem;max-width:46ch;margin-left:auto;margin-right:auto}
+.rootitem .award{margin-top:12px;display:inline-block;font-size:.8rem;font-weight:600;color:var(--text);background:color-mix(in srgb,var(--leaf) 12%,var(--card));border:1px solid color-mix(in srgb,var(--leaf) 30%,var(--line));border-radius:0;padding:4px 12px}
+.rchips{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-top:12px}
+.rchips span{font-size:.78rem;color:var(--muted);background:color-mix(in srgb,var(--leaf) 9%,var(--card));border:1px solid color-mix(in srgb,var(--leaf) 22%,var(--line));border-radius:0;padding:3px 10px}
+@media (max-width:720px){
+  .rootgrid{grid-template-columns:1fr;gap:34px}
+  .rootlines{display:none}
+  .rootitem{text-align:left;padding:0}
+  .rootitem .stamp{margin:0 0 4px}
+  .rootitem p{margin-left:0}
+  .rchips{justify-content:flex-start}
+}
+.skill .edu-sub{display:block;font-size:.85rem;color:var(--muted);margin:2px 0 8px}
+.skill{position:relative;background:var(--card);border:1px solid var(--line);border-top:2px solid color-mix(in srgb,var(--leaf) 35%,var(--line));border-radius:0;padding:16px 18px;box-shadow:var(--shadow)}
+.skill b{display:flex;align-items:center;gap:9px;margin-bottom:8px}
+.skill .kick{display:block;font-size:.68rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:color-mix(in srgb,var(--leaf2) 80%,var(--muted));margin-bottom:4px}
+.skill .chips{display:flex;flex-wrap:wrap;gap:6px}
+.skill .chips span{font-size:.8rem;color:var(--muted);background:color-mix(in srgb,var(--leaf) 9%,var(--card));border:1px solid color-mix(in srgb,var(--leaf) 22%,var(--line));border-radius:0;padding:3px 10px}
 .skill span{color:var(--muted);font-size:.93rem}
+.skill .tag{font-size:.76rem}
 .contact{text-align:center}
 .contact .sub{margin:0 auto 4px}
 footer{padding:28px 0;color:var(--muted);font-size:.85rem;text-align:center;border-top:1px solid var(--line)}
@@ -223,11 +532,12 @@ footer{padding:28px 0;color:var(--muted);font-size:.85rem;text-align:center;bord
 
 <nav>
   <div class="wrap">
-    <a class="brand" href="#top">Justin <span>Tagalogon-Nguyen</span></a>
+    <a class="brand" href="#top"><img class="avatar" src="img/me_sm.jpg" alt="" width="30" height="30">Justin&nbsp;<span>Tagalogon-Nguyen</span></a>
     <div class="links">
       <a href="#projects">Projects</a>
       <a href="#about">About</a>
       <a href="#experience">Experience</a>
+      <a href="#flows">Flows</a>
       <a href="#contact">Contact</a>
       <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Resume</a>
     </div>
@@ -254,15 +564,28 @@ footer{padding:28px 0;color:var(--muted);font-size:.85rem;text-align:center;bord
           <ellipse cx="400" cy="350" rx="380" ry="90" fill="#000" opacity=".22" filter="url(#soft)"/>
         </g>
       </svg>
+      <div class="bird" id="bird" aria-hidden="true"><svg viewBox="0 0 44 40">
+        <path d="M6 30 L1 33 L7 34 Z" fill="#3e7fb8"/>
+        <ellipse cx="20" cy="27" rx="15" ry="12" fill="#5ea6e0"/>
+        <ellipse cx="22" cy="31" rx="9" ry="6.5" fill="#fbe7c6"/>
+        <circle cx="26" cy="15" r="10" fill="#5ea6e0"/>
+        <path d="M22 6 q2 -5 6 -3 q-3 1 -3 4z" fill="#3e7fb8"/>
+        <path d="M14 24 q5 -6 11 0 q-5 5 -11 0z" fill="#3e7fb8"/>
+        <circle cx="29" cy="13.5" r="2.4" fill="#16202b"/><circle cx="29.8" cy="12.7" r=".8" fill="#fff"/>
+        <path d="M35 15 L41 17 L35 19 Z" fill="#f2a33a"/>
+        <circle cx="30.5" cy="19" r="2" fill="#f7a9a0" opacity=".7"/>
+      </svg></div>
       <div class="crown">
         <div class="tagline">Software Engineer &middot; Automation &middot; HR Technology</div>
         <h1>My Project Tree</h1>
-        <p class="hint">Newest projects at the top, rooted where I started. These are the &ldquo;fruits&rdquo; of my labor.</p>
+        <p class="hint">Newest projects at the top, rooted where I started.<br><span style="display:inline-block;margin-top:4px;font-size:.88em;font-style:italic;opacity:.72">The &ldquo;fruits&rdquo; of my labor.</span></p>
         <div class="legend" aria-hidden="true">
           <span><i style="background:var(--web)"></i>Web apps</span>
           <span><i style="background:var(--auto)"></i>Automation</span>
           <span><i style="background:var(--infra)"></i>Infrastructure</span>
+          <span><i style="background:var(--special)"></i>Highlight</span>
         </div>
+        <button type="button" class="tour-btn" id="tour-start"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10-6.5z" fill="currentColor"/></svg>Take the guided tour</button>
       </div>
     </div>
 
@@ -270,17 +593,29 @@ footer{padding:28px 0;color:var(--muted);font-size:.85rem;text-align:center;bord
     <div class="tier">
       <div class="slot left"><span class="leafy"></span><span class="leafy b"></span>
         <button class="fruit" data-cat="web" data-p="testdata">
-          <span class="orb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="11" r="2"/><path d="M5.5 16c.8-1.5 2-2.2 3-2.2s2.2.7 3 2.2M14 10h4M14 13h4"/></svg></span>
-          <span class="label"><h3>HRIS Test Data Generator</h3><div class="res">117 ID types &middot; 63 countries</div><div class="go">Explore &rarr;</div></span>
+          <span class="orb"><svg class="sk" viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"><rect x="16" y="26" width="68" height="48"/><rect x="29" y="38" width="14" height="14"/><path d="M26 62l4-6h12l4 6M56 44h18M56 56h12"/></g></svg></span>
+          <span class="label"><h3>HRIS Test Data Generator</h3><div class="tools"><span>Python</span><span>Flask</span><span>JavaScript</span><span>SQL Server</span></div><span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></span>
         </button>
       </div>
       <div class="trunk"><span class="year">2026</span></div>
-      <div class="slot right"><span class="leafy"></span><span class="leafy b"></span>
+      <div class="slot right low"><span class="leafy"></span><span class="leafy b"></span>
         <button class="fruit" data-cat="infra" data-p="migration">
-          <span class="orb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2.5" y="4" width="7" height="16" rx="1.5"/><rect x="14.5" y="4" width="7" height="16" rx="1.5"/><path d="M10 12h4m-1.5-2 1.5 2-1.5 2M5 8h2M17 8h2"/></svg></span>
-          <span class="label"><h3>Server Modernization</h3><div class="res">42+ jobs &middot; zero business impact</div><div class="go">Explore &rarr;</div></span>
+          <span class="orb"><svg class="sk" viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"><rect x="16" y="22" width="68" height="44"/><path d="M50 66v12M36 78h28M50 56V34M41 43l9-9 9 9"/></g></svg></span>
+          <span class="label"><h3>Server Modernization</h3><div class="tools"><span>Windows Server</span><span>IIS</span><span>PowerShell</span><span>SFTP</span></div><span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></span>
         </button>
       </div>
+    </div>
+
+    <!-- 2026 (July) -->
+    <div class="tier">
+      <div class="slot left"><span class="leafy"></span><span class="leafy b"></span>
+        <button class="fruit" data-cat="auto" data-p="uuid">
+          <span class="orb"><svg class="sk" viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"><rect x="18" y="20" width="50" height="58"/><path d="M18 34h50M18 48h50M18 62h50"/><path d="M28 55h28" stroke-dasharray="4 4"/><path d="M74 44h12v34H70"/><path d="M78 54h4M78 62h4"/></g></svg></span>
+          <span class="label"><h3>Missing ID Detection &amp; Ticketing</h3><div class="tools"><span>SQL Server</span><span>PowerShell</span><span>ServiceNow API</span><span>SQL Agent</span></div><span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></span>
+        </button>
+      </div>
+      <div class="trunk"></div>
+      <div class="slot right empty"></div>
     </div>
 
     <!-- 2025 -->
@@ -289,49 +624,54 @@ footer{padding:28px 0;color:var(--muted);font-size:.85rem;text-align:center;bord
       <div class="trunk"><span class="year">2025</span></div>
       <div class="slot right"><span class="leafy"></span><span class="leafy b"></span>
         <button class="fruit" data-cat="web" data-p="policy">
-          <span class="orb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11M13 13h5M13 16h5"/></svg></span>
-          <span class="label"><h3>Time &amp; Pay Policy Portal</h3><div class="res">Built for enterprise-wide use</div><div class="go">Explore &rarr;</div></span>
+          <span class="orb"><svg class="sk" viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"><rect x="24" y="20" width="52" height="64"/><path d="M40 20v-4h20v4M36 40h28M36 52h28M36 64h18"/></g></svg></span>
+          <span class="label"><h3>Time &amp; Pay Policy Portal</h3><div class="tools"><span>Python</span><span>Flask</span><span>JavaScript</span><span>SQL Server</span></div><span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></span>
         </button>
       </div>
     </div>
 
     <!-- 2024 -->
     <div class="tier">
-      <div class="slot left"><span class="leafy"></span><span class="leafy b"></span>
+      <div class="slot left low"><span class="leafy"></span><span class="leafy b"></span>
         <button class="fruit" data-cat="auto" data-p="messenger">
-          <span class="orb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 5h16v10H9l-5 4z"/><path d="M8 9h8M8 12h5"/></svg></span>
-          <span class="label"><h3>Mass Communication Hub</h3><div class="res">~40 senders &middot; 4 teams</div><div class="go">Explore &rarr;</div></span>
+          <span class="orb"><svg class="sk" viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"><path d="M20 42h12l32-14v44L32 58H20zM32 58l4 14h8l-3-14M74 42l4 8-4 8"/></g></svg></span>
+          <span class="label"><h3>Mass Communication Hub</h3><div class="tools"><span>Power Apps</span><span>Power Automate</span><span>SharePoint</span><span>Teams</span></div><span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></span>
         </button>
       </div>
       <div class="trunk"><span class="year">2024</span></div>
-      <div class="slot right empty has-role"><div class="roles"><span class="role"><span class="tag"><b>HRIS Developer</b> &middot; Oct 2023</span></span></div></div>
+      <div class="slot right first"><span class="leafy"></span><span class="leafy b"></span>
+        <button class="fruit" data-cat="special" data-p="ddac">
+          <span class="orb"><svg class="sk" viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"><path d="M50 18l9.4 19 21 3-15.2 14.8 3.6 21L50 66l-18.8 9.8 3.6-21L19.6 40l21-3z"/></g></svg></span>
+          <span class="label"><h3>Disney Data &amp; Analytics Conference Presenter</h3><div class="res">2024 &middot; Innovation Showcase</div><span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></span>
+        </button></div>
     </div>
 
     <!-- 2023 -->
     <div class="tier">
-      <div class="slot left"><span class="leafy"></span><span class="leafy b"></span>
+      <div class="slot left has-role"><span class="leafy"></span><span class="leafy b"></span>
         <button class="fruit" data-cat="web" data-p="governance">
-          <span class="orb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3 5 6v5c0 4.5 3 8 7 10 4-2 7-5.5 7-10V6z"/><path d="m9 12 2 2 4-4"/></svg></span>
-          <span class="label"><h3>Access Governance App</h3><div class="res">Sole developer since 2023</div><div class="go">Explore &rarr;</div></span>
+          <span class="orb"><svg class="sk" viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"><rect x="26" y="44" width="48" height="38"/><path d="M36 44V26h28v18M50 58v10"/></g></svg></span>
+          <span class="label"><h3>Access Governance Application</h3><div class="tools"><span>SQL Server</span><span>IIS</span><span>Single sign-on</span><span>JavaScript</span></div><span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></span>
         </button>
+        <div class="roles at-top"><span class="role"><span class="rt"><b>HRIS Developer</b> &middot; The Walt Disney Co. (Corporate)</span><span class="rd">Oct 2023</span></span></div>
       </div>
       <div class="trunk"><span class="year">2023</span></div>
-      <div class="slot right"><span class="leafy"></span><span class="leafy b"></span>
-        <button class="fruit" data-cat="auto" data-p="conversion">
-          <span class="orb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 7h11l-3-3M20 17H9l3 3"/><path d="M4 12h16"/></svg></span>
-          <span class="label"><h3>Full-Time Conversion Automation</h3><div class="res">Replaced a manual quarterly process</div><div class="go">Explore &rarr;</div></span>
+      <div class="slot right mid"><span class="leafy"></span><span class="leafy b"></span>
+        <button class="fruit" data-cat="web" data-p="conversion">
+          <span class="orb"><svg class="sk" viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"><path d="M18 80h64M22 70l18-18 12 10 26-28M64 34h14v14"/></g></svg></span>
+          <span class="label"><h3>Full-Time Conversion Application</h3><div class="tools"><span>Python</span><span>Flask</span><span>Bootstrap</span><span>SQL Server</span></div><span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></span>
         </button>
       </div>
     </div>
 
     <!-- 2022 -->
     <div class="tier">
-      <div class="slot left empty has-role"><div class="roles"><span class="role"><span class="tag"><b>Data Solutions Analyst</b> &middot; Mar 2022</span></span><span class="role"><span class="tag"><b>Data Solutions Specialist</b> &middot; Jan 2022</span></span></div></div>
+      <div class="slot left empty has-role"><div class="roles"><span class="role"><span class="rt"><b>Data Solutions Analyst</b> &middot; Disneyland Resort</span><span class="rd">Mar 2022</span></span><span class="role"><span class="rt"><b>Data Solutions Specialist</b> &middot; Disneyland Resort</span><span class="rd">Jan 2022</span></span></div></div>
       <div class="trunk"><span class="year">2022</span></div>
-      <div class="slot right"><span class="leafy"></span><span class="leafy b"></span>
+      <div class="slot right low"><span class="leafy"></span><span class="leafy b"></span>
         <button class="fruit" data-cat="web" data-p="mealbreak">
-          <span class="orb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3 2"/></svg></span>
-          <span class="label"><h3>Meal Break Compliance App</h3><div class="res">Used by resort leaders resort-wide</div><div class="go">Explore &rarr;</div></span>
+          <span class="orb"><svg class="sk" viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"><polygon points="70.6,57.3 60.3,67.6 45.7,67.6 35.4,57.3 35.4,42.7 45.7,32.4 60.3,32.4 70.6,42.7"/><path d="M18 22v16h12V22M24 38v40M84 22l-6 10v18h6M84 22v56"/></g></svg></span>
+          <span class="label"><h3>Meal Break Compliance Application</h3><div class="tools"><span>ASP.NET 6</span><span>C#</span><span>SQL Server</span><span>Bootstrap</span></div><span class="go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></span>
         </button>
       </div>
     </div>
@@ -351,23 +691,24 @@ footer{padding:28px 0;color:var(--muted);font-size:.85rem;text-align:center;bord
     </div>
     <p class="rootlabel">Rooted at <b>Disney California Adventure</b>, Dec 2021: where I started as a part-time merchandise Cast Member.</p>
   </div>
-  <p class="note">Projects built at The Walt Disney Company. Details are generalized to protect internal information.</p>
+  <p class="note">Details are generalized to protect internal information.</p>
 </section>
 
 <!-- project details (shown in a pop-up) -->
 <template id="t-testdata" data-shots="img/testdata_generate.jpg|Generating synthetic national IDs;img/testdata_address.jpg|Generating test addresses" data-title="HRIS Test Data Generator" data-when="2026 – Present">
   <h4>The problem</h4>
-  <p>HR testing teams relied on a password-protected Excel workbook to create valid national ID numbers for test records. It was hard to maintain, share and trust.</p>
+  <p>HR <strong class="kw">testing</strong> teams relied on a password-protected Excel workbook to create valid national ID numbers for test records. It was hard to maintain, share and trust.</p>
   <h4>What I built</h4>
   <ul>
-    <li>A self-service web app that generates and validates synthetic national IDs, plus test addresses</li>
-    <li>Extracted the workbook's generation and validation rules with Python</li>
-    <li>Single sign-on with role-based access</li>
+    <li>A <strong class="kw">self-service</strong> web app that generates and validates <strong class="kw">synthetic national IDs</strong>, plus test addresses</li>
+    <li>Extracted the workbook's generation and <strong class="kw">validation</strong> rules with <strong class="kw">Python</strong></li>
+    <li>Delivered in sprints, with testers validating each release and tracking feedback in a shared issue log they designed</li>
+    <li><strong class="kw">Single sign-on</strong> with <strong class="kw">role-based access</strong></li>
   </ul>
   <h4>Results</h4>
-  <ul><li>117 ID types across 63 countries in one tool</li><li>Used by 10+ people on HR testing teams</li></ul>
+  <ul><li>Replaced a hard-to-maintain, password-protected workbook with one shared tool covering 117 ID types across 63 countries</li><li>10+ people on HR <strong class="kw">testing</strong> teams create valid test data on their own, from a source they can trust</li></ul>
   <h4>How I built it</h4>
-  <p>Guided AI-assisted development with a written specification, a rules registry and an audit process, so speed never came at the cost of accuracy.</p>
+  <p>Guided <strong class="kw">AI-assisted development</strong> with a written <strong class="kw">specification</strong>, a rules registry and an audit process, so speed never came at the cost of accuracy.</p>
   <h4>Tech</h4>
   <div class="tags"><span class="tag">Python</span><span class="tag">Flask</span><span class="tag">JavaScript</span><span class="tag">SQL Server</span><span class="tag">IIS</span></div>
 </template>
@@ -381,11 +722,24 @@ footer{padding:28px 0;color:var(--muted);font-size:.85rem;text-align:center;bord
     <li>Moved secure file transfer to a new platform, mapping 4 undocumented stakeholder groups and their data flows</li>
   </ul>
   <h4>Results</h4>
-  <ul><li>42+ scheduled data-processing jobs and 3 web applications migrated</li><li>No business-impacting downtime</li><li>Flagged 2 security issues before cutover</li></ul>
+  <ul><li>Moved 42+ scheduled data-processing jobs and 3 web applications off an end-of-support server with no business-impacting downtime</li><li>Reduced risk by flagging 2 <strong class="kw">security issues</strong> before cutover</li></ul>
   <h4>Tech</h4>
   <div class="tags"><span class="tag">Windows Server</span><span class="tag">IIS</span><span class="tag">PowerShell</span><span class="tag">SFTP</span><span class="tag">PGP</span></div>
 </template>
 
+<template id="t-uuid" data-shots="img/uuid_alert.jpg|Email summary and the incident it creates" data-title="Missing ID Detection &amp; Ticketing" data-when="2026">
+  <h4>The problem</h4>
+  <p>HRIS Audit and Systems Project leaders needed a faster way to find SAP records missing a Workday ID, then opened ServiceNow incidents by hand so the right team could fix them.</p>
+  <h4>What I built</h4>
+  <ul>
+    <li>A scheduled SQL job and <strong class="kw">stored procedure</strong> that find records missing an ID and email leaders a summary, including records still unresolved from earlier runs</li>
+    <li>After learning how leaders used the alerts, I proposed a <strong class="kw">ServiceNow API</strong> integration: a scheduled <strong class="kw">PowerShell</strong> script now creates the incident with preset details, the record count, a CSV attachment and the leaders as watchers</li>
+  </ul>
+  <h4>Results</h4>
+  <ul><li>Leaders no longer open incidents by hand: missing IDs are detected and ticketed automatically</li><li>History tracking shows which records are still unresolved, helping keep employee records consistent between SAP and Workday</li></ul>
+  <h4>Tech</h4>
+  <div class="tags"><span class="tag">SQL Server</span><span class="tag">Stored procedures</span><span class="tag">SQL Server Agent</span><span class="tag">PowerShell</span><span class="tag">Task Scheduler</span><span class="tag">ServiceNow API</span></div>
+</template>
 <template id="t-policy" data-shots="img/policy_chart.jpg|Eligibility chart across policy categories;img/policy_maintenance.jpg|Policy maintenance hub" data-title="Time &amp; Pay Policy Portal" data-when="2025 – Present">
   <h4>The problem</h4>
   <p>Leaders had no single place to see which time and pay policies (vacation, sick, holiday, overtime, meal breaks and more) apply to which worker groups.</p>
@@ -393,123 +747,178 @@ footer{padding:28px 0;color:var(--muted);font-size:.85rem;text-align:center;bord
   <ul>
     <li>An eligibility chart across 10 policy categories, with filters by business area, segment and HR attributes</li>
     <li>Effective-date views and a filter for groups missing policies</li>
-    <li>Policy add, edit and assign functions with transaction history and notes</li>
+    <li>Policy add, edit and assign functions with <strong class="kw">transaction history</strong> and notes</li>
   </ul>
   <h4>Results</h4>
-  <ul><li>Designed as a single source of truth for enterprise-wide use by leaders</li><li>Saved views and Excel export for self-service reporting</li></ul>
+  <ul><li>Gives leaders a <strong class="kw">single source of truth</strong> for which policies apply to which worker groups, instead of piecing it together</li><li>Saved views and Excel export for <strong class="kw">self-service</strong> reporting</li><li>Analysis surfaced 255 of 341 policy combinations for one program as redundant, with a proposal to consolidate them and simplify policy administration</li></ul>
   <h4>Tech</h4>
   <div class="tags"><span class="tag">Python</span><span class="tag">Flask</span><span class="tag">JavaScript</span><span class="tag">SQL Server</span><span class="tag">IIS</span></div>
 </template>
 
-<template id="t-messenger" data-shots="img/messenger_build.jpg|Building and previewing a message;img/messenger_send.jpg|Choosing recipients and channels;img/ddac_showcase.jpg|Presenting at the Innovation Showcase (photo)" data-title="Mass Communication Hub" data-when="2024 – Present">
+<template id="t-messenger" data-shots="img/messenger_build.jpg|Building and previewing a message;img/messenger_send.jpg|Choosing recipients and channels" data-title="Mass Communication Hub" data-when="2024 – Present">
   <h4>The problem</h4>
   <p>Teams sent system and maintenance announcements by hand, with inconsistent wording and time zones across regions.</p>
   <h4>What I built</h4>
   <ul>
-    <li>A Power Apps tool with pre-built templates, a rich text editor, live preview and test sends</li>
-    <li>17 Power Automate flows that deliver to Teams and Outlook, including scheduled messages</li>
-    <li>Automatic time zone conversion for messages sent across regions</li>
+    <li>A <strong class="kw">Power Apps</strong> tool with pre-built templates, a rich text editor, live preview and test sends</li>
+    <li>17 <strong class="kw">Power Automate</strong> flows that deliver to Teams and Outlook, including <strong class="kw">scheduled messages</strong></li>
+    <li>Automatic <strong class="kw">time zone conversion</strong> for messages sent across regions</li>
   </ul>
   <h4>Results</h4>
-  <ul><li>About 40 senders across 4 teams, reaching department-wide audiences</li><li>Presented in the Innovation Showcase at Disney's internal Data &amp; Analytics Conference</li></ul>
+  <ul><li>About 40 senders across 4 teams send consistent, on-time announcements to department-wide audiences from one place</li><li>Built on existing Microsoft apps, with no extra licenses</li><li>Presented in the Innovation Showcase at Disney's internal Data &amp; Analytics Conference</li></ul><button type="button" class="xlink" data-open="ddac">See the conference highlight &rarr;</button>
   <h4>Tech</h4>
   <div class="tags"><span class="tag">Power Apps</span><span class="tag">Power Automate</span><span class="tag">SharePoint</span><span class="tag">Teams</span><span class="tag">Outlook</span></div>
 </template>
 
-<template id="t-governance" data-shots="img/governance_exceptions.jpg|Exceptions management" data-title="Access Governance App" data-when="2023 – Present">
+<template id="t-ddac" data-shots="img/ddac_poster.jpg|The poster (recreated);img/ddac_showcase.jpg|At the Innovation Showcase booth;img/ddac_booth.jpg|Demo station" data-note="The poster is recreated without internal links or branding. Photos are from the event. Select one to enlarge." data-title="Disney Data &amp; Analytics Conference Presenter" data-when="2024">
+  <h4>The event</h4>
+  <p>In 2024 I presented CommUNITY Messenger, the mass communication tool I built, in the Innovation Showcase at Disney's internal Data &amp; Analytics Conference (DDAC).</p>
+  <h4>What I presented</h4>
+  <ul>
+    <li>A poster covering the problem, the system architecture and the user experience</li>
+    <li>How six Microsoft apps work together without extra premium licenses</li>
+    <li>A walkthrough of building, previewing and sending a message</li>
+  </ul>
+  <h4>The project</h4>
+  <p>The tool behind the poster: templates, <strong class="kw">time zone conversion</strong> and one-click delivery to Teams and Outlook.</p>
+  <button type="button" class="xlink" data-open="messenger">Open Mass Communication Hub &rarr;</button>
+</template>
+
+<template id="t-governance" data-shots="img/governance_exceptions.jpg|Exceptions management" data-title="Access Governance Application" data-when="2023 – Present">
   <h4>The problem</h4>
   <p>A security team needed a reliable way to manage security roles, data access levels and time-limited access exceptions.</p>
   <h4>What I built</h4>
   <ul>
-    <li>An exceptions module tracking expiring and expired access, with status, assignment, activity log and email generation</li>
+    <li>An exceptions module tracking expiring and expired access, with status, assignment, <strong class="kw">activity log</strong> and email generation</li>
     <li>Access role types, role and data-level commenting, and profile-by-role search</li>
-    <li>Downloadable reports</li>
+    <li><strong class="kw">Downloadable reports</strong></li>
   </ul>
   <h4>Results</h4>
-  <ul><li>Sole developer of the application since 2023, used by a team of about 10</li><li>Modernized login to single sign-on and moved hosting to Windows Server 2022</li></ul>
+  <ul><li>Sole developer since 2023 of the application a security team of about 10 relies on to govern access</li><li>Expiring-access tracking helps keep temporary exceptions from lingering</li><li>Strengthened security with <strong class="kw">single sign-on</strong> and moved hosting to Windows Server 2022</li></ul>
   <h4>Tech</h4>
   <div class="tags"><span class="tag">SQL Server</span><span class="tag">IIS</span><span class="tag">Single sign-on</span><span class="tag">JavaScript</span></div>
 </template>
 
-<template id="t-conversion" data-shots="img/conversion_dashboard.jpg|Conversion progress dashboard" data-title="Full-Time Conversion Automation" data-when="2023">
+<template id="t-conversion" data-shots="img/conversion_dashboard.jpg|Conversion progress dashboard;img/conversion_apps.jpg|Reviewing and managing applications" data-title="Full-Time Conversion Application" data-when="2023">
   <h4>The problem</h4>
-  <p>The resort scheduling team ran its quarterly full-time conversion process by hand.</p>
+  <p>For years, the resort scheduling team ran quarterly full-time conversions on printed sheets marked up by hand. Work could only move forward with the physical papers, changes were hard to reflect, and manual entries invited human error.</p>
   <h4>What I built</h4>
   <ul>
-    <li>The full middle tier and front end of a web application on top of existing SQL tables</li>
+    <li>The full <strong class="kw">middle tier</strong> and <strong class="kw">front end</strong> of a web application on top of existing SQL tables</li>
     <li>Simple data visualization and navigation designed for a non-technical audience</li>
   </ul>
   <h4>Results</h4>
-  <ul><li>Replaced the manual quarterly process with a guided tool</li><li>Set a precedent for future tools to streamline department processes</li></ul>
+  <ul><li>Replaced a paper-based process with a live, shared tool the team could work in anytime</li><li>Real-time updates and structured entries reduced the risk of human error</li><li>Set a precedent for future tools to streamline department processes</li></ul>
   <h4>Tech</h4>
   <div class="tags"><span class="tag">Python</span><span class="tag">Flask</span><span class="tag">Bootstrap</span><span class="tag">SQL Server</span></div>
 </template>
 
-<template id="t-mealbreak" data-shots="img/mealbreak_phone.jpg|Mobile shift view for leaders" data-title="Meal Break Compliance App" data-when="2022 – 2023">
+<template id="t-mealbreak" data-shots="img/mealbreak_phone.jpg|Mobile shift view for leaders" data-title="Meal Break Compliance Application" data-when="2022 – 2023">
   <h4>The problem</h4>
-  <p>Resort leaders needed a fast, organized view of shift details to make sure hourly employees take their required meal breaks on time.</p>
+  <p>Resort leaders needed a fast, organized view of shift details to make sure hourly employees take their required meal breaks on time, which also avoids paying meal break premiums.</p>
   <h4>What I built</h4>
   <ul>
     <li>A real-time, mobile-friendly shift view</li>
-    <li>Led the project as developer and project manager: database, UI/UX, requirements and Jira</li>
+    <li>Led the project as developer and project manager: database, UI/UX, <strong class="kw">requirements</strong> and Jira</li>
   </ul>
   <h4>Results</h4>
-  <ul><li>Supports all resort leaders who oversee meal breaks</li><li>Earned me a salaried project hire that became a permanent role</li></ul>
+  <ul><li>Supports all resort leaders who oversee meal breaks, who reported using it daily to keep breaks on time and help avoid meal break premiums</li><li>Still in use years after launch</li></ul>
   <h4>Tech</h4>
   <div class="tags"><span class="tag">ASP.NET 6</span><span class="tag">C#</span><span class="tag">SQL Server</span><span class="tag">Bootstrap</span></div>
 </template>
 
 
 <section id="about" class="alt">
-  <div class="wrap">
+  <div class="wrap about">
+    <span class="me-wrap fruit-me" role="button" tabindex="0" aria-label="Say hello"><img class="me" src="img/me.jpg" alt="Photo of Justin Tagalogon-Nguyen" width="180" height="180"></span>
+    <div>
     <h2>About me</h2>
-    <p class="sub">I turn manual, outdated processes into tools people are excited to use. I started at Disneyland Resort learning time and attendance systems and writing SQL audits, got picked for a project hire to build my first production app, and today I build and run HR technology for Global HR Operations at The Walt Disney Company.</p>
-    <p class="sub">I build with AI-assisted development guided by clear specs and audits, and I've trained colleagues on tools like Claude and Copilot. I enjoy partnering with the people who use my tools, figuring out systems nobody has documented, and leaving things better than I found them.</p>
+    <p class="sub">Hello! I'm a software engineer who enjoys building tools that simplify, optimize and enhance the way people work. I started at Disneyland Resort learning time and attendance systems and writing SQL audits, got picked for a project hire to build my first production app, and today I build and run HR technology for Global HR Operations at The Walt Disney Company.</p>
+    <p class="sub">I have experience coding from scratch, building with AI-assisted development, and blending the two, always guided by clear specs and careful review. I've also trained colleagues on tools like Claude and Copilot. I enjoy partnering with the people who use my tools, figuring out systems nobody has documented, and leaving things better than I found them.</p>
+    </div>
   </div>
 </section>
 
 <section id="experience">
   <div class="wrap">
     <h2>Experience</h2>
-    <div class="timeline" style="margin-top:18px">
-      <div class="job"><h3>HRIS Developer</h3><div class="when">The Walt Disney Company &middot; 2023 &ndash; Present</div><p>Build and run HR technology for Global HR Operations: web apps, SQL data solutions, Power Platform tools, servers and secure file transfer.</p></div>
-      <div class="job"><h3>Data Solutions Analyst</h3><div class="when">The Walt Disney Company &middot; 2022 &ndash; 2023</div><p>Built tools for Disneyland Resort Workforce Management, including the meal break compliance app and full-time conversion automation.</p></div>
-      <div class="job"><h3>Data Solutions Specialist</h3><div class="when">The Walt Disney Company &middot; 2022</div><p>Created audits and SQL queries for Time and Attendance teams, leading to a salaried project hire.</p></div>
-      <div class="job"><h3>Merchandise Cast Member (part-time)</h3><div class="when">Disney California Adventure &middot; 2021</div><p>Where my Disney journey started.</p></div>
-      <div class="job"><h3>Software Support Engineer</h3><div class="when">VF Engineering &middot; 2020 &ndash; 2021</div><p>Tested and validated engine control unit software and supported customers.</p></div>
-      <div class="job"><h3>Research Associate</h3><div class="when">Cal Poly Pomona &middot; 2019 &ndash; 2020</div><p>Natural language processing research on gender bias in text.</p></div>
+    <div class="timeline" style="margin-top:22px">
+      <div class="job dis"><span class="yrs">2023 &ndash; Present</span><h3>HRIS Developer</h3><div class="when">The Walt Disney Co. (Corporate)</div><p>Build and run HR technology for Global HR Operations: web apps, <strong class="kw">SQL data solutions</strong>, Power Platform tools, servers and secure file transfer.</p><ul class="jd"><li>Led the <strong class="kw">Windows Server 2012 to 2022 migration</strong>, moving 42+ scheduled data jobs and 3 web applications with no business-impacting downtime</li><li>Moved secure file transfer to <strong class="kw">GlobalScape EFT</strong>, mapping 4 stakeholder groups despite limited legacy documentation and flagging 2 <strong class="kw">security issues</strong> before cutover</li><li>Build and host <strong class="kw">Flask</strong> web applications on IIS with <strong class="kw">single sign-on</strong> and role-based access</li><li><strong class="kw">Reverse-engineered</strong> an undocumented <strong class="kw">data integration</strong> and <strong class="kw">documented</strong> it for future maintainers</li><li>Manage the dev, stage and production web server environments that host the team's applications</li><li>Run a regular intake, update and feedback cadence with HRIS Security, Time and Pay, and testing teams</li><li>Built automated detection and ServiceNow ticketing for SAP records missing a Workday ID</li><li><strong class="kw">Mentor</strong> interns and technical contributors; led about 8 of the first 18 sessions in the Phone-a-Friend AI coaching program</li></ul></div>
+      <div class="job dis"><span class="yrs">2022 &ndash; 2023</span><h3>Data Solutions Analyst</h3><div class="when">Disneyland Resort</div><p>Built tools for Disneyland Resort Workforce Management, including the meal break compliance application and full-time conversion application.</p><ul class="jd"><li>Owned <strong class="kw">database development</strong>, <strong class="kw">UI/UX design</strong>, requirements and Jira project management for the Meal Break Compliance Application</li><li>Built the <strong class="kw">middle tier</strong> and <strong class="kw">front end</strong> of the Full-Time Conversion Application, replacing a manual quarterly process</li><li>Served as <strong class="kw">liaison</strong> to resort leaders, translating business needs into technical solutions</li><li>Became product owner of the Meal Break Compliance Application and supported peers and specialists on the team</li><li>Worked across <strong class="kw">MyTime</strong>, <strong class="kw">CDS</strong>, SAP and Tableau</li></ul></div>
+      <div class="job dis"><span class="yrs">2022</span><h3>Data Solutions Specialist</h3><div class="when">Disneyland Resort</div><p>Created audits and <strong class="kw">SQL queries</strong> for Time and Attendance teams, leading to a salaried project hire.</p><ul class="jd"><li>Learned the resort's time and attendance systems, <strong class="kw">MyTime</strong> and <strong class="kw">CDS</strong></li><li>Built audits and <strong class="kw">SQL queries</strong> that Time and Attendance teams relied on, catching mismatched hours, overnight shifts split across days, and incorrect holiday shift types that affected pay</li><li>Earned a salaried project hire to develop the Meal Break Compliance Application</li></ul></div>
+      <div class="job dis"><span class="yrs">2021</span><h3>Merchandise Cast Member (part-time)</h3><div class="when">Disney California Adventure</div><p>Where my Disney journey started.</p><ul class="jd"><li>Completed Job Knowledge training to work at the Pixar Pier games</li></ul></div>
+      <div class="job"><span class="yrs">2020 &ndash; 2021</span><h3>Software Support Engineer</h3><div class="when">VF Engineering</div><p>Tested and validated engine control unit software and supported customers.</p><ul class="jd"><li>Performed software <strong class="kw">testing</strong>, <strong class="kw">validation</strong> and configuration updates</li><li>Maintained <strong class="kw">testing</strong> protocols and <strong class="kw">documentation</strong></li><li>Served as <strong class="kw">liaison</strong> between customers and software technicians</li><li>Built an <strong class="kw">Airtable</strong> inventory system with SKU barcode labels, so scanning a part updated stock automatically</li></ul></div>
+      <div class="job"><span class="yrs">2019 &ndash; 2020</span><h3>Research Associate</h3><div class="when">California State Polytechnic University, Pomona</div><p>Natural language processing research on gender bias in text.</p><ul class="jd"><li>Mentored by Dr. Adam Summerville in a research partnership on AI, <strong class="kw">machine learning</strong> and <strong class="kw">NLP</strong></li><li>Measured hidden gender bias in <strong class="kw">pretrained language models</strong> and studied retraining to reduce it</li><li>Met weekly and kept progress journals throughout the project</li></ul></div>
     </div>
   </div>
 </section>
 
-<section class="alt">
+<section id="education" class="alt roots-sec">
+  <div class="wrap">
+    <h2>Education &amp; Research</h2>
+    <div class="rootgrid">
+      <article class="rootitem">
+        <div class="rh"><span class="stamp" aria-hidden="true"><svg viewBox="0 0 100 100"><g fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square" stroke-linejoin="miter"><path d="M12 44l38-18 38 18-38 18z"/><path d="M28 52v18h44V52M88 44v20"/></g></svg></span><span class="kick">Degree &middot; 2017 &ndash; 2020</span>
+        <h3>Bachelor's in Computer Science</h3></div>
+        <p class="where">California State Polytechnic University, Pomona</p>
+        <p>Graduate coursework in Natural Language Processing, Information Retrieval, Advanced Software Engineering, and Advanced Algorithm Design &amp; Analysis.</p>
+        <p class="award">National Science Foundation Scholar</p>
+      </article>
+      <article class="rootitem">
+        <div class="rh"><span class="stamp" aria-hidden="true"><svg viewBox="0 0 100 100"><g fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square" stroke-linejoin="miter"><path d="M28 16h30l16 16v52H28z"/><path d="M58 16v16h16M38 48h26M38 60h26M38 72h14"/></g></svg></span><span class="kick">Research &middot; 2019 &ndash; 2020</span>
+        <h3>Gender Bias in Language Models</h3></div>
+        <p class="where">Research Associate with Dr. Adam Summerville</p>
+        <p>Measured hidden gender bias in pretrained language models using cloze sentence tests, then retrained the models to study whether the bias could be reduced.</p>
+        <div class="rchips"><span>Python</span><span>NLTK</span><span>Pretrained language models</span><span>GLUE benchmarking</span><span>Google Colab</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="flows">
+  <div class="wrap">
+    <h2>Automation Flows</h2>
+    <p class="sub">A look inside some of the Power Automate flows behind my tools. Select one to see how it works, step by step.</p>
+    <div class="fl-grid" id="fl-grid"></div>
+    <div class="fl-panel" id="fl-panel" hidden></div>
+    <p class="note fl-note">Flows are generalized to remove internal names, sites and data.</p>
+  </div>
+</section>
+
+<section>
   <div class="wrap">
     <h2>Skills</h2>
     <div class="skills" style="margin-top:18px">
-      <div class="skill"><b>Languages &amp; frameworks</b><span>Python, Flask, SQL (T-SQL), JavaScript, HTML/CSS, C#, ASP.NET, PowerShell</span></div>
-      <div class="skill"><b>Data</b><span>SQL Server, SSIS, SQL Server Agent, data quality auditing, Snowflake, Tableau</span></div>
-      <div class="skill"><b>Automation &amp; low-code</b><span>Power Apps, Power Automate, SharePoint, AI-assisted development</span></div>
-      <div class="skill"><b>Infrastructure</b><span>Windows Server, IIS, single sign-on, role-based access, SFTP, PGP encryption</span></div>
+      <div class="skill sk-chips"><b>Languages &amp; frameworks</b><div class="chips"><span>Python</span><span>Flask</span><span>SQL (T-SQL)</span><span>JavaScript</span><span>HTML/CSS</span><span>C#</span><span>ASP.NET</span><span>PowerShell</span></div></div>
+      <div class="skill sk-chips"><b>Data</b><div class="chips"><span>SQL Server</span><span>SSIS</span><span>SQL Server Agent</span><span>Data quality auditing</span><span>Snowflake</span><span>Tableau</span></div></div>
+      <div class="skill sk-chips"><b>Automation &amp; low-code</b><div class="chips"><span>Power Apps</span><span>Power Automate</span><span>SharePoint</span><span>Airtable</span><span>AI-assisted development</span></div></div>
+      <div class="skill sk-chips"><b>Infrastructure</b><div class="chips"><span>Windows Server</span><span>IIS</span><span>Single sign-on</span><span>Role-based access</span><span>SFTP</span><span>PGP encryption</span></div></div>
     </div>
   </div>
 </section>
 
 <section id="contact" class="contact">
   <div class="wrap">
-    <h2>Let's connect</h2>
-    <p class="sub">Always happy to talk automation, AI, or data.</p>
-    <div class="cta">
-      <a class="btn primary" href="mailto:jtagalogon@hotmail.com">Email me</a>
+    <div class="cta" aria-label="Contact">
+      <a class="btn primary" href="mailto:jtagalogon@hotmail.com">Email</a>
       <a class="btn" href="https://www.linkedin.com/in/justin-tagalogon-nguyen-706173146/" target="_blank" rel="noopener">LinkedIn</a>
-      <a class="btn" href="https://github.com/jtagalogon" target="_blank" rel="noopener">GitHub</a>
       <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Resume</a>
     </div>
   </div>
 </section>
 </main>
 
-<dialog class="lb" id="lb" aria-label="Screen preview"><button type="button" aria-label="Close">&times;</button><img id="lb-img" alt=""><p id="lb-cap"></p></dialog>
+<dialog class="lb" id="lb" aria-label="Screen preview"><button type="button" aria-label="Close">&times;</button><div class="lb-fig" id="lb-fig"><img id="lb-img" alt=""><span class="lb-tag" id="lb-tag"></span></div><p id="lb-cap"></p><p class="lb-hint" id="lb-hint"></p></dialog>
 
+<div class="tour-spot" id="tour-spot" aria-hidden="true"></div>
+<div class="tour" id="tour" role="dialog" aria-modal="false" aria-labelledby="tour-title" hidden>
+  <div class="tour-top"><img src="img/me_sm.jpg" alt="" width="34" height="34"><div><div class="tour-step" id="tour-step"></div><div class="tour-title" id="tour-title"></div></div><button type="button" class="tour-x" id="tour-x" aria-label="End tour">&times;</button></div>
+  <p class="tour-text" id="tour-text"></p>
+  <div class="td-bubble" id="tour-bubble" hidden></div>
+  <div class="tour-detail" id="tour-detail" hidden></div>
+  <div class="tour-bar"><span id="tour-prog"></span></div>
+  <div class="tour-ctl"><button type="button" class="btn tour-more" id="tour-more"><span class="lg">View project details</span><span class="sm">Details</span> &darr;</button><button type="button" class="btn" id="tour-back">Back</button><button type="button" class="btn primary" id="tour-next">Next</button></div>
+</div>
 <footer>&copy; 2026 Justin Tagalogon-Nguyen</footer>
 
 <script>
@@ -594,11 +1003,11 @@ footer{padding:28px 0;color:var(--muted);font-size:.85rem;text-align:center;bord
         const [src,cap]=item.split('|');
         const b=document.createElement('button'); b.type='button'; b.className='shot';
         b.innerHTML=`<img src="${src}" alt="${cap}" loading="lazy"><span>${cap}</span>`;
-        b.onclick=()=>{const lb=document.getElementById('lb'); document.getElementById('lb-img').src=src; document.getElementById('lb-img').alt=cap; document.getElementById('lb-cap').textContent=cap; lb.showModal();};
+        b.onclick=()=>openLb(src,cap);
         g.appendChild(b);
       });
       panel.appendChild(g);
-      const note=document.createElement('p'); note.className='shots-note'; note.textContent='Screens are recreated mockups with sample data. Select one to enlarge.';
+      const note=document.createElement('p'); note.className='shots-note'; note.textContent=tpl.dataset.note||'Screens are recreated mockups with sample data. Select one to enlarge.';
       panel.appendChild(note);
     }
     const foot=document.createElement('div'); foot.className='bloom-foot';
@@ -606,6 +1015,7 @@ footer{padding:28px 0;color:var(--muted);font-size:.85rem;text-align:center;bord
     foot.querySelector('button').onclick=()=>{const f=open&&open.fruit; close(); if(f) f.focus();};
     panel.appendChild(foot);
     bloom.appendChild(panel);
+    bloom.querySelectorAll('[data-open]').forEach(x=>x.onclick=()=>{const f=document.querySelector('.fruit[data-p="'+x.dataset.open+'"]'); if(f) show(f,true);});
     fruit.closest('.tier').after(bloom);
     open={fruit,bloom};
     fruit.classList.add('active'); fruit.setAttribute('aria-expanded','true');
@@ -619,11 +1029,244 @@ footer{padding:28px 0;color:var(--muted);font-size:.85rem;text-align:center;bord
     });
   }
 
-  fruits.forEach(f=>{f.setAttribute('aria-expanded','false'); f.addEventListener('click',()=>show(f,true));});
-  const lb=document.getElementById('lb'); lb.addEventListener('click',()=>lb.close());
+
+  // keep role markers that sit under a fruit clear of its label
+  function placeRoles(){
+    document.querySelectorAll('.roles.at-top').forEach(r=>{
+      if(getComputedStyle(r).position!=='absolute'){r.style.top='';return;}
+      const slot=r.closest('.slot'), lab=slot.querySelector('.fruit .label');
+      r.style.top=Math.round(lab.getBoundingClientRect().bottom-slot.getBoundingClientRect().top+20)+'px';
+    });
+  }
+  placeRoles(); addEventListener('resize',placeRoles); addEventListener('load',placeRoles);
+  if(document.fonts) document.fonts.ready.then(placeRoles);
+  fruits.forEach(f=>{f.setAttribute('aria-expanded','false'); f.addEventListener('click',()=>{ if(!document.body.classList.contains('touring')) show(f,true); });});
+  
+const CALLOUTS={
+ 'img/testdata_generate.jpg':[[12,45,'Countries and their supported ID types'],[52,10,'Switch between generating and validating IDs'],[63,38,'Set birth date, gender and quantity, then generate or batch'],[87,52,'Generated IDs with the values used, ready to copy']],
+ 'img/testdata_address.jpg':[[38,34,'Filter by site and choose optional fields'],[89,34,'Generate, then copy everything into a test system'],[30,58,'Test address records formatted for pasting']],
+ 'img/messenger_build.jpg':[[14,30,'Pick a category, subject and message template'],[26,74,'Rich text editor for the message body'],[58,45,'Live preview of the email or Teams card'],[48,95,'Send yourself a test before it goes out']],
+ 'img/messenger_send.jpg':[[14,40,'Saved email lists by region'],[14,75,'Add one-off recipients as Direct or CC'],[14,90,'Deliver through Outlook, Teams or both']],
+ 'img/policy_chart.jpg':[[30,15,'Filter by worker group, HR attributes and policy'],[73,15,'Effective-date view and missing-policy filter'],[86,10,'Saved views and Excel export'],[65,45,'Eligibility for each worker group across policy categories']],
+ 'img/policy_maintenance.jpg':[[47,38,'Version existing policies or add new ones'],[47,60,'Manage calendar policies and overrides'],[71,92,'Assign policies and review transaction history']],
+ 'img/governance_exceptions.jpg':[[31,16,'Access exceptions expiring soon or already expired'],[65,16,'Assign, set status, or generate an HR override email'],[55,55,'Exception details, roles and data levels'],[22,86,'Activity log for each exception']],
+ 'img/conversion_dashboard.jpg':[[12,36,'Each conversion process by area'],[52,22,'Overall progress across every position'],[58,60,'Filled vs. capacity for each position']],
+ 'img/ddac_poster.jpg':[[74,2.5,'Abstract: what the tool does and why'],[23,22,'System architecture across six Microsoft apps'],[87,22,'Walkthrough of both screens'],[18,82,'Key features']],
+ 'img/conversion_apps.jpg':[[37,21,'Pick a process and position, then filter by qualification'],[52,31,'Approval and qualification status at a glance'],[64.5,45,'Open any application in a quick view'],[79,48,'Job knowledge and other applications for the applicant'],[80,72,'Admins update approval and qualification, and leave comments']],
+ 'img/uuid_alert.jpg':[[20,40,'Record count and the incident created automatically'],[26,65,'Records still missing from earlier runs'],[75,31,'Incident fields preset for the right team'],[75,67,'Leaders added as watchers'],[75,80,'Results attached as a CSV']],
+ 'img/mealbreak_phone.jpg':[[50,22,'Filter by leader and priority'],[32,37,'Employees sorted by lunch deadline and color-coded'],[24,47,'Time left, area and location, with a link to the time sheet']]
+};
+function openLb(src,cap){
+  const lb=document.getElementById('lb'),fig=document.getElementById('lb-fig'),img=document.getElementById('lb-img');
+  fig.querySelectorAll('.hot,.tip').forEach(d=>d.remove());
+  img.src=src; img.alt=cap; document.getElementById('lb-cap').textContent=cap;
+  document.getElementById('lb-tag').textContent=/ddac_(showcase|booth)/.test(src)?'':/ddac_poster/.test(src)?'Recreated · No internal links or branding':'Recreated mockup · Sample data';
+  const pts=CALLOUTS[src]||[];
+  document.getElementById('lb-hint').textContent=pts.length?'Select the glowing dots to see what each part does.':'';
+  pts.forEach(([x,y,t],i)=>{
+    const h=document.createElement('button'); h.type='button'; h.className='hot'; h.innerHTML='<i></i>';
+    h.setAttribute('aria-label',t); h.setAttribute('aria-expanded','false');
+    h.style.left=x+'%'; h.style.top=y+'%'; h.style.animationDelay=(.2+i*.12)+'s';
+    h.onclick=e=>{e.stopPropagation(); const was=h.classList.contains('on'); hideTips(); if(was) return;
+      h.classList.add('on','seen'); h.setAttribute('aria-expanded','true');
+      const tip=document.createElement('div'); tip.className='tip'; tip.setAttribute('role','status'); tip.textContent=t;
+      tip.style.left=x+'%'; tip.style.top=y+'%';
+      if(y<28) tip.classList.add('below'); if(x<22) tip.classList.add('l'); else if(x>78) tip.classList.add('r');
+      fig.appendChild(tip);
+      const r=tip.getBoundingClientRect(), vw=document.documentElement.clientWidth;
+      if(r.left<8) tip.style.marginLeft=(8-r.left)+'px'; else if(r.right>vw-8) tip.style.marginLeft=(vw-8-r.right)+'px';};
+    fig.appendChild(h);
+  });
+  lb.showModal();
+}
+function hideTips(){const fig=document.getElementById('lb-fig'); fig.querySelectorAll('.tip').forEach(t=>t.remove()); fig.querySelectorAll('.hot.on').forEach(h=>{h.classList.remove('on');h.setAttribute('aria-expanded','false');});}
+  const lb=document.getElementById('lb'); lb.addEventListener('click',e=>{ if(e.target.closest('.lb-fig')) hideTips(); else lb.close(); });
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!lb.open) close();});
   new ResizeObserver(()=>draw(false)).observe(tree);
   addEventListener('resize',()=>draw(false));
+
+  // ---- guided tour ----
+  const TOUR=[
+   ['testdata',"This is my most recent project. Our HR testing teams were creating test national IDs from a password-protected Excel workbook that was hard to maintain and share. I pulled its rules out with Python and rebuilt it as a self-service web app covering 117 ID types across 63 countries, plus test addresses, now used by 10+ testers. I delivered it in sprints with testers validating each release, and I wrote a spec, a rules registry and an audit process up front, and that's what kept the AI-assisted parts accurate."],
+   ['migration',"This one was all infrastructure. I led our move from Windows Server 2012 to 2022: 42+ scheduled data jobs, 3 web apps, the service account and the encryption keys. Along the way I moved secure file transfer to GlobalScape EFT, mapped four stakeholder groups with limited legacy documentation to go on, and flagged two security issues before cutover, all with no business-impacting downtime."],
+   ['uuid',"Here I was asked for automated alerts on SAP records missing a Workday ID. Once I saw that leaders used those alerts to open ServiceNow incidents by hand, I proposed going a step further. Now a stored procedure finds the records, and a PowerShell script creates the incident automatically, with the details preset, the leaders added as watchers and the results attached."],
+   ['policy',"Leaders didn't have a single place to see which time and pay policies apply to which worker groups. I built a portal with an eligibility chart across 10 policy categories, filters and effective-date views, plus admin tools to add, edit and assign policies with full transaction history. The analysis also showed 255 of 341 policy combinations for one program could be consolidated. It's designed to be the single source of truth for leaders across the enterprise."],
+   ['ddac',"A favorite moment: in 2024 I presented the Mass Communication Hub in the Innovation Showcase at Disney's internal Data & Analytics Conference. My poster walked through the problem, how six Microsoft apps fit together without extra licenses, and both screens of the tool."],
+   ['messenger',"Announcements used to be written by hand, with inconsistent wording and time zones. I built a Power Apps tool with templates, a rich text editor, live preview and test sends, backed by 17 Power Automate flows that deliver to Teams and Outlook and convert time zones automatically. About 40 senders across 4 teams use it."],
+   ['governance',"When I joined the HRIS team, I became the sole developer of the application our security team uses to govern roles, data levels and access exceptions. I built an Exceptions Management module for expiring access, moved sign-on to single sign-on, and added role commenting, profile-by-role search and downloadable reports."],
+   ['conversion',"For years, Disneyland Resort's scheduling team ran quarterly full-time conversions on printed sheets marked up by hand. I built the middle tier and front end of a Flask web app on top of their existing SQL tables, with a progress dashboard and an admin view for reviewing applications, so the work became a live, shared tool with less room for human error."],
+   ['mealbreak',"And this is where it all started. I was brought on as a project hire to build this app, which helps resort leaders who oversee meal breaks see who's due for a break in real time, right from their phones, which also helps avoid meal break premiums. I owned the database, UI/UX, requirements and Jira project management. Leaders used it daily, it's still in use years later, I became its product owner, and that project hire became a permanent role."],
+   [null,"Thanks for taking the tour! Keep scrolling to learn more about me and my experience, or grab my resume from the top of the page."]
+  ];
+
+  const tour=document.getElementById('tour'), tStep=document.getElementById('tour-step'), tTitle=document.getElementById('tour-title'), tText=document.getElementById('tour-text'), tProg=document.querySelector('#tour-prog'), tBack=document.getElementById('tour-back'), tNext=document.getElementById('tour-next'), tPlay=document.getElementById('tour-play')||document.createElement('button'), tMore=document.getElementById('tour-more');
+  let ti=-1, timer=null, tFruit=null;
+  const wide=()=>matchMedia('(min-width:900px)').matches;
+  const spot=document.getElementById('tour-spot'), tDetail=document.getElementById('tour-detail');
+  let tDet=false;
+  function tSpot(){
+    if(tour.hidden||!tFruit){spot.classList.remove('on');return;}
+    spot.style.height=document.documentElement.scrollHeight+'px';
+    const a=tFruit.querySelector('.orb').getBoundingClientRect(), b=tFruit.querySelector('.label').getBoundingClientRect();
+    const L=Math.min(a.left,b.left), T=Math.min(a.top,b.top)-16, R=Math.max(a.right,b.right), B=Math.max(a.bottom,b.bottom);
+    const cx=(L+R)/2+scrollX, cy=(T+B)/2+scrollY, r=Math.hypot(R-L,B-T)/2+10;
+    spot.style.setProperty('--sx',cx+'px'); spot.style.setProperty('--sy',cy+'px'); spot.style.setProperty('--sr',r+'px');
+    spot.classList.add('on');
+  }
+  function tBuild(id){
+    const tpl=document.getElementById('t-'+id), f=fruits.find(x=>x.dataset.p===id);
+    tour.style.setProperty('--c',getComputedStyle(f).getPropertyValue('--c'));
+    const CAT={web:'Web app',auto:'Automation',infra:'Infrastructure',special:'Highlight'};
+    const secs=sections(tpl); tDetail.innerHTML='';
+    // meta row
+    const meta=document.createElement('div'); meta.className='td-meta';
+    meta.innerHTML='<span class="td-cat">'+(CAT[f.dataset.cat]||'')+'</span><span class="td-when">'+tpl.dataset.when+'</span>';
+    tDetail.appendChild(meta);
+    // narration as a quote
+
+    // gallery
+    if(tpl.dataset.shots){
+      const items=tpl.dataset.shots.split(';');
+      const box=document.createElement('section'); box.className='td-block td-gallery';
+      box.innerHTML='<h5><span>Gallery</span><em>'+items.length+(items.length>1?' screens':' screen')+' &middot; select to enlarge</em></h5>';
+      const g=document.createElement('div'); g.className='td-shots';
+      items.forEach(item=>{const [src,cap]=item.split('|'); const b=document.createElement('button'); b.type='button';
+        b.innerHTML=`<span class="zm" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6"/><path d="m15 15 5 5M10.5 8v5M8 10.5h5"/></svg></span><img src="${src}" alt="${cap}" loading="lazy"><span class="cap">${cap}</span>`;
+        b.setAttribute('aria-label','Enlarge: '+cap); b.onclick=()=>openLb(src,cap); g.appendChild(b);});
+      box.appendChild(g); tDetail.appendChild(box);
+    }
+    // story cards
+    const cards=document.createElement('div'); cards.className='td-cards'; let n=0, techSec=null;
+    secs.forEach(sec=>{
+      if(/^tech/i.test(sec.title)){techSec=sec;return;}
+      const c=document.createElement('section'); c.className='td-card';
+      const h=document.createElement('h5'); h.innerHTML='<b>'+(++n)+'</b>'; h.appendChild(document.createTextNode(sec.title)); c.appendChild(h);
+      sec.els.forEach(e=>c.appendChild(e.cloneNode(true))); cards.appendChild(c);
+    });
+    tDetail.appendChild(cards);
+    if(techSec){
+      const t=document.createElement('section'); t.className='td-block td-tech';
+      t.innerHTML='<h5><span>'+techSec.title+'</span></h5>';
+      techSec.els.forEach(e=>t.appendChild(e.cloneNode(true))); tDetail.appendChild(t);
+    }
+    tDetail.scrollTop=0;
+  }
+  function tSetDet(on){
+    tDet=on&&!!tFruit; tour.classList.toggle('detail',tDet); tDetail.hidden=!tDet;
+    document.documentElement.classList.toggle('tour-lock',tDet);
+    tMore.innerHTML=tDet?'Show less &uarr;':'<span class="lg">View project details</span><span class="sm">Details</span> &darr;';
+    if(tDet) tBuild(tFruit.dataset.p);
+    tPlace();
+  }
+  let tPlace=function(){
+    tour.classList.remove('anchored','from-left','from-right','docked'); tour.style.left=''; tour.style.top='';
+    if(tDet||!tFruit||!wide()) return;
+    const trunk=tFruit.closest('.tier').querySelector('.trunk').getBoundingClientRect();
+    const orb=tFruit.querySelector('.orb').getBoundingClientRect(), lab=tFruit.querySelector('.label').getBoundingClientRect();
+    const onLeft=tFruit.closest('.slot').classList.contains('left');
+    tour.classList.add('anchored');
+    const W=tour.offsetWidth, top=orb.top+scrollY-6;
+    let left;
+    if(onLeft){ left=Math.max(lab.right, trunk.right)+28; tour.classList.add('from-left'); }
+    else { left=Math.min(lab.left, trunk.left)-28-W; tour.classList.add('from-right'); }
+    left=Math.max(12,Math.min(left,document.documentElement.clientWidth-W-12));
+    tour.style.left=(left+scrollX)+'px'; tour.style.top=top+'px';
+  };
+  const _tPlace=tPlace; tPlace=function(){_tPlace(); tSpot();};
+  function tGo(i){
+    ti=Math.max(0,Math.min(TOUR.length-1,i));
+    const [id,txt]=TOUR[ti];
+    if(open) close();
+    fruits.forEach(f=>f.classList.remove('spot'));
+    if(id){
+      const f=fruits.find(x=>x.dataset.p===id); tFruit=f;
+      f.classList.add('spot');
+      tTitle.textContent=document.getElementById('t-'+id).dataset.title.replace(/&amp;/g,'&'); tStep.textContent='Stop '+(ti+1)+' of '+(TOUR.length-1);
+      tMore.hidden=false; tText.textContent=txt;
+      tSetDet(false);
+      const r=f.getBoundingClientRect(); let y=r.top+scrollY-(wide()?140:90);
+      if(wide()&&!tDet){const c=tour.getBoundingClientRect(), cb=c.bottom+scrollY; if(cb-y>innerHeight-20) y=cb-innerHeight+20; y=Math.min(y,c.top+scrollY-80);}
+      scrollTo({top:y,behavior:reduce?'auto':'smooth'});
+    } else {
+      tFruit=null; tSetDet(false); tMore.hidden=true; tTitle.textContent="That's the tree"; tStep.textContent='Tour complete'; tText.textContent=txt;
+      document.getElementById('about').scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
+    }
+    tProg.style.width=((ti+1)/TOUR.length*100)+'%';
+    tBack.disabled=ti===0;
+    tNext.textContent=ti===TOUR.length-1?'Finish':'Next';
+    tPlay.hidden=ti===TOUR.length-1;
+  }
+  tMore.onclick=()=>{ if(!tFruit) return; tStop(); tSetDet(!tDet); if(!tDet){const r=tFruit.getBoundingClientRect(); scrollTo({top:r.top+scrollY-140,behavior:reduce?'auto':'smooth'});} };
+  function tStop(){clearInterval(timer);timer=null;tPlay.innerHTML='&#9654; Auto-play';}
+  function tEnd(){tStop();tDet=false;document.documentElement.classList.remove('tour-lock');tour.classList.remove('detail');tDetail.hidden=true;tour.hidden=true;spot.classList.remove('on');document.body.classList.remove('touring');fruits.forEach(f=>f.classList.remove('spot'));tFruit=null;document.getElementById('tour-start').focus();}
+  document.getElementById('tour-start').onclick=()=>{if(open) close();tDet=false;tour.hidden=false;document.body.classList.add('touring');tGo(0);tNext.focus({preventScroll:true});};
+  tNext.onclick=()=>{ if(ti===TOUR.length-1) tEnd(); else tGo(ti+1); };
+  tBack.onclick=()=>{tStop();tGo(ti-1);};
+  document.getElementById('tour-x').onclick=tEnd;
+  tPlay.onclick=()=>{ if(timer){tStop();return;} tPlay.innerHTML='&#10074;&#10074; Pause';
+    timer=setInterval(()=>{ if(ti>=TOUR.length-1){tStop();return;} tGo(ti+1); },14000); };
+  addEventListener('resize',()=>{ if(!tour.hidden) tPlace(); });
+  document.addEventListener('keydown',e=>{ if(tour.hidden) return;
+    if(e.key==='ArrowRight'){tStop();tNext.click();} else if(e.key==='ArrowLeft'){tBack.click();}
+    else if(e.key==='Escape'&&!document.getElementById('lb').open){ if(tDet) tSetDet(false); else tEnd(); } });
+  // while touring, clicking the spotlighted fruit opens the tour's detail view instead of the bloom
+  fruits.forEach(f=>f.addEventListener('click',e=>{ if(!tour.hidden){ setTimeout(()=>{ const k=TOUR.findIndex(t=>t[0]===f.dataset.p); if(k>-1){ if(k!==ti) tGo(k); else tSetDet(!tDet); } },0); } }));
+
+  // easter egg: say hello
+  (function(){const w=document.querySelector('.me-wrap'); if(!w) return;
+    const hi=()=>{w.querySelectorAll('.hi').forEach(x=>x.remove()); w.classList.remove('wave'); void w.offsetWidth; w.classList.add('wave');
+      const b=document.createElement('span'); b.className='hi'; b.textContent='Hello! \u{1F44B}'; b.setAttribute('role','status'); w.appendChild(b);
+      b.addEventListener('animationend',()=>b.remove()); setTimeout(()=>w.classList.remove('wave'),700);};
+    w.addEventListener('click',hi); w.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();hi();}});})();
+
+  // a little bird that peeks out of the leaves
+  (function(){const b=document.getElementById('bird'); if(!b||matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const ALL=[[9.25, 36.86, -30], [11.07, 34.87, -20], [13.0, 33.65, -10], [15.0, 33.24, 0], [20.5, 19.08, -30], [22.4, 17.0, -20], [24.42, 15.72, -10], [26.5, 15.29, 0], [28.58, 15.72, 10], [33.88, 6.96, -30], [35.89, 4.75, -20], [38.04, 3.4, -10], [40.25, 2.94, 0], [42.46, 3.4, 10], [44.61, 4.75, 20], [46.62, 6.96, 30], [49.38, 5.12, -30], [51.35, 2.95, -20], [53.45, 1.62, -10], [55.62, 1.18, 0], [57.8, 1.62, 10], [59.9, 2.95, 20], [61.88, 5.12, 30], [66.35, 10.01, -20], [68.45, 8.68, -10], [70.62, 8.24, 0], [72.8, 8.68, 10], [74.9, 10.01, 20], [76.88, 12.18, 30], [83.12, 24.71, 0], [85.17, 25.13, 10], [87.14, 26.37, 20], [89.0, 28.41, 30], [94.75, 49.31, 30]]; const P0=ALL.map(p=>p.slice(0,2)), PN=ALL.filter(p=>Math.abs(p[2])<=0).map(p=>p.slice(0,2)); let last=-1, vis=true;
+    new IntersectionObserver(es=>{vis=es[0].isIntersecting;}).observe(b.parentElement);
+    function go(){ if(vis&&!document.hidden){ const P=innerWidth<720?PN:P0; let i; do{i=Math.floor(Math.random()*P.length);}while(i===last&&P.length>1); last=i;
+        b.style.left=P[i][0]+'%'; b.style.top=P[i][1]+'%'; b.classList.toggle('flip',Math.random()<.5);
+        b.classList.remove('peek'); void b.offsetWidth; b.classList.add('peek'); }
+      setTimeout(go,6000+Math.random()*7000); }
+    b.addEventListener('animationend',()=>b.classList.remove('peek'));
+    setTimeout(go,2500);})();
+
+  // ---- automation flows ----
+  (function(){
+    const APPS={"powerapps": ["Power Apps", "#742774"], "teams": ["Teams", "#5b5fc7"], "sharepoint": ["SharePoint", "#038387"], "excel": ["Excel", "#217346"], "outlook": ["Outlook", "#0f6cbd"], "logic": ["Logic", "#56606b"], "http": ["HTTP", "#8a5a2b"], "schedule": ["Schedule", "#c46a12"], "manual": ["Manual", "#56606b"]}, FLOWS=[{"id": "teamscard", "title": "Post a Teams Announcement", "project": "Mass Communication Hub", "summary": "Turns a message from the app into a branded Adaptive Card and posts it to a Teams channel, so every announcement looks the same no matter who writes it.", "trigger": "Button in a Power App", "steps": [{"t": "trigger", "app": "powerapps", "label": "Triggered from the app", "note": "Passes 4 values: subject, icon URL, message body and a response-time note"}, {"t": "action", "app": "logic", "label": "Fill the Adaptive Card template", "note": "Built into the post action: card JSON with expressions like @{triggerBody()['text']} that drop each value into place"}, {"t": "action", "app": "teams", "label": "Post card in a chat or channel", "note": "Posts as the signed-in user to a fixed team channel, with the subject as the post title"}], "detail": {"points": ["<b>Adaptive Cards</b> are JSON documents that Teams renders as rich, consistent layouts. I designed one card template so every announcement shares the same banner, layout and footer.", "The flow stores the card as a <b>JSON template</b> and uses <b>Power Automate expressions</b> to inject the app's inputs (subject, icon, message, response-time note) at send time.", "Keeping the layout in JSON separates <b>design from content</b>: senders only fill in fields in the app, and updating the card's look means editing one template instead of every message.", "The <b>Post card</b> action targets a specific team and channel and posts as the user, so each announcement shows who sent it.", "This is the \u201cno table\u201d version of the card, used for messages that don\u2019t need the time zone table."], "anatomy": [["Banner image", "Brand header across the top"], ["Icon", "Small round image chosen in the app"], ["Title", "The message subject"], ["Message", "Body text plus a response-time note"], ["Contact line", "Who to reach with questions"], ["Footer", "Copyright line"]], "code": "{\n  \"type\": \"AdaptiveCard\",\n  \"version\": \"1.6\",\n  \"body\": [\n    { \"type\": \"Image\", \"url\": \"<banner image>\", \"width\": \"100%\" },\n    { \"type\": \"Image\", \"url\": \"@{triggerBody()['icon']}\",\n      \"style\": \"Person\", \"width\": \"25px\" },\n    { \"type\": \"TextBlock\", \"text\": \"@{triggerBody()['subject']}\",\n      \"weight\": \"Bolder\", \"wrap\": true },\n    { \"type\": \"Container\", \"separator\": true, \"items\": [\n      { \"type\": \"TextBlock\", \"text\": \"@{triggerBody()['message']}\",\n        \"size\": \"Medium\", \"wrap\": true },\n      { \"type\": \"TextBlock\", \"text\": \"@{triggerBody()['responseNote']}\",\n        \"size\": \"Small\", \"wrap\": true }\n    ]},\n    { \"type\": \"TextBlock\", \"text\": \"Questions? [contact](mailto:...)\",\n      \"size\": \"Small\", \"separator\": true },\n    { \"type\": \"TextBlock\", \"text\": \"\u00a9 footer\", \"isSubtle\": true }\n  ]\n}"}}, {"id": "schedule", "title": "Schedule a Message", "project": "Mass Communication Hub", "summary": "Saves a message to send later, converting the chosen time into a standard time zone first.", "trigger": "Button in a Power App", "steps": [{"t": "trigger", "app": "powerapps", "label": "Triggered from the app", "note": "Receives message details and send time"}, {"t": "action", "app": "logic", "label": "Convert time zone", "note": "Normalizes the send time across regions"}, {"t": "action", "app": "sharepoint", "label": "Create item in the schedule list", "note": "Queued for a separate sender flow to pick up"}], "detail": {"points": ["The app sends the chosen time in Eastern time, and the flow converts it to <b>UTC</b> so every scheduled message runs on one clock.", "Everything needed to send later is saved as one <b>SharePoint list item</b>: title, banner, color, card JSON, response-time note, template, email HTML and delivery channel.", "New items start with a <b>Pending</b> status, so they're easy to track until they go out."], "codeTitle": "Convert time zone", "code": "{\n  \"baseTime\": \"@triggerBody()?['sendTime']\",\n  \"sourceTimeZone\": \"Eastern Standard Time\",\n  \"destinationTimeZone\": \"UTC\",\n  \"formatString\": \"u\"\n}"}}, {"id": "listsync", "title": "Recipient List Sync", "project": "Mass Communication Hub", "summary": "When a new distribution file is uploaded, validates the emails, rebuilds the recipient list and removes duplicates.", "trigger": "New file in a SharePoint library", "steps": [{"t": "trigger", "app": "sharepoint", "label": "When a file is created", "note": "Checks the upload folder every minute"}, {"t": "action", "app": "excel", "label": "Run Office Scripts", "note": "Clean the file and flag invalid emails"}, {"t": "action", "app": "excel", "label": "Read the cleaned rows and email issues"}, {"t": "cond", "label": "Any invalid emails?", "yes": [{"t": "action", "app": "logic", "label": "Build an HTML table of issues"}, {"t": "action", "app": "outlook", "label": "Email the report from a shared mailbox"}], "no": []}, {"t": "action", "app": "sharepoint", "label": "Get current list items"}, {"t": "loop", "label": "For each existing item", "body": [{"t": "action", "app": "sharepoint", "label": "Delete item"}]}, {"t": "loop", "label": "For each row in the new file", "body": [{"t": "action", "app": "sharepoint", "label": "Create item"}]}, {"t": "action", "app": "logic", "label": "Initialize a list of seen user IDs"}, {"t": "loop", "label": "For each list item", "body": [{"t": "cond", "label": "User ID already seen?", "yes": [{"t": "action", "app": "sharepoint", "label": "Delete the duplicate"}], "no": [{"t": "action", "app": "logic", "label": "Add ID to the seen list"}]}]}, {"t": "action", "app": "outlook", "label": "Send a completion email"}], "detail": {"points": ["Dropping a new distribution file into a <b>SharePoint folder</b> starts the flow automatically.", "<b>Office Scripts</b> in Excel clean the file and move invalid emails into their own table. If any turn up, they're emailed as an <b>HTML table</b> from a shared mailbox.", "The recipient list is <b>fully rebuilt</b> from the file so it always matches the latest version.", "A final pass tracks <b>user IDs in an array</b> and deletes any duplicates."], "codeTitle": "Duplicate check", "code": "contains(\n  variables('uniqueValues'),\n  items('Apply_to_each')?['UserID']\n)\n// true  -> delete the duplicate\n// false -> append the ID to uniqueValues"}}, {"id": "secmail", "title": "Security Team Mailer", "project": "Access Governance Application", "summary": "Sends emails from the governance app with optional attachments, choosing the mailbox and recipient setup at send time.", "trigger": "Button in a Power App", "steps": [{"t": "trigger", "app": "powerapps", "label": "Triggered from the app", "note": "Sender, recipients, subject, body and options"}, {"t": "action", "app": "logic", "label": "Initialize an attachments array"}, {"t": "action", "app": "sharepoint", "label": "Get the selected items"}, {"t": "loop", "label": "For each item", "body": [{"t": "action", "app": "sharepoint", "label": "Get attachments"}, {"t": "loop", "label": "For each attachment", "body": [{"t": "action", "app": "sharepoint", "label": "Get attachment content"}, {"t": "cond", "label": "Content empty?", "yes": [{"t": "action", "app": "logic", "label": "Skip"}], "no": [{"t": "action", "app": "logic", "label": "Add to attachments"}]}]}]}, {"t": "cond", "label": "Send from the shared inbox?", "yes": [{"t": "cond", "label": "Recipient options + attachments?", "yes": [{"t": "action", "app": "outlook", "label": "Send from shared mailbox", "note": "4 variants by recipients and attachments"}], "no": []}], "no": [{"t": "cond", "label": "Recipient options + attachments?", "yes": [{"t": "action", "app": "outlook", "label": "Send as the user", "note": "4 variants by recipients and attachments"}], "no": []}]}], "detail": {"points": ["The app passes the sender, subject, body, To and CC lists, and two options: which mailbox to send from and how to address recipients.", "Attachments are pulled from the selected <b>SharePoint items</b> and collected into an <b>array of name and file content</b>, skipping empty files.", "<b>Nested conditions</b> route each email to one of 8 send actions: shared mailbox or the user, recipient setup, with or without attachments."], "codeTitle": "Building the attachments array", "code": "{\n  \"Name\": \"@items('Apply_to_each_attachment')?['DisplayName']\",\n  \"ContentBytes\": \"@body('Get_attachment_content')\"\n}"}}, {"id": "timeoff", "title": "Daily Time-Off Digest", "project": "HRIS leaders", "summary": "Every morning, reads the team calendar, finds time-off events, tracks what changed since yesterday and emails HRIS leaders a digest, including location-based holidays.", "trigger": "Schedule \u00b7 daily at 6 AM", "steps": [{"t": "trigger", "app": "schedule", "label": "Recurrence", "note": "Daily at 6:00 AM"}, {"t": "action", "app": "outlook", "label": "Get calendar events", "note": "Calendar view for the upcoming window"}, {"t": "action", "app": "logic", "label": "Filter to time-off events", "note": "Vacation, sick, care day and similar categories"}, {"t": "action", "app": "excel", "label": "Snapshot the previous run", "note": "Office Script clears it, then rows are copied over"}, {"t": "loop", "label": "For each time-off event", "body": [{"t": "action", "app": "logic", "label": "Parse the event", "note": "Category, keyword, person's name, start and end dates"}, {"t": "action", "app": "excel", "label": "Add a row to the table"}]}, {"t": "action", "app": "excel", "label": "Run Office Scripts", "note": "Find new and updated events, and today's events"}, {"t": "action", "app": "logic", "label": "Build HTML tables", "note": "New, updated and today"}, {"t": "action", "app": "excel", "label": "Check the holiday calendar"}, {"t": "cond", "label": "Is today a holiday?", "yes": [{"t": "action", "app": "outlook", "label": "Send the holiday version"}], "no": [{"t": "action", "app": "outlook", "label": "Send the daily digest"}]}], "detail": {"points": ["Requested by my leader to give HRIS leaders a quick daily snapshot of who's out, plus anything new or changed.", "Reads the team calendar from 30 days back onward and keeps events whose <b>category or subject</b> matches vacation, sick, jury duty, care day and other leave types.", "Saves the previous run as a <b>snapshot</b> so <b>Office Scripts</b> can tell which events are new, changed or removed.", "Checks each person's <b>location-based holiday calendar</b> to flag paid holidays, and sends a clean <b>HTML</b> digest that helps my leader plan the day and spot when someone should use vacation before hitting the accrual maximum."], "codeTitle": "Name from the organizer's email", "code": "split(item()?['organizer'], '@')[0]\n// \"first.last\" -> tokens -> \"First Last\"\nconcat(\n  toUpper(substring(first, 0, 1)),\n  toLower(substring(first, 1, sub(length(first), 1))),\n  ' ', ...\n)"}}, {"id": "photos", "title": "Profile Photo Sync", "project": "Team tool", "summary": "Pages through a people directory API, downloads each real profile photo and saves it to SharePoint.", "trigger": "Manual run", "steps": [{"t": "trigger", "app": "manual", "label": "Run manually", "note": "Takes an organization code"}, {"t": "action", "app": "logic", "label": "Initialize page URL and profile list"}, {"t": "action", "app": "sharepoint", "label": "Create a destination folder"}, {"t": "loop", "label": "Do until there are no more pages", "body": [{"t": "action", "app": "http", "label": "Call the directory API"}, {"t": "action", "app": "logic", "label": "Parse JSON"}, {"t": "loop", "label": "For each profile", "body": [{"t": "action", "app": "logic", "label": "Add to the profile list"}]}, {"t": "action", "app": "logic", "label": "Set the next page URL"}]}, {"t": "loop", "label": "For each profile", "body": [{"t": "cond", "label": "Has a real photo?", "yes": [{"t": "action", "app": "http", "label": "Download the photo", "note": "Continues even if the request fails"}, {"t": "cond", "label": "Download succeeded?", "yes": [{"t": "action", "app": "sharepoint", "label": "Save the file"}], "no": []}], "no": []}]}, {"t": "action", "app": "outlook", "label": "Email a summary"}], "detail": {"points": ["The directory API returns profiles one page at a time. A <b>Do until</b> loop follows each response's <b>next page link</b> until there are none left, with a one-hour safety timeout.", "Profiles still using the <b>default photo</b> are skipped.", "Each download is set to <b>continue even if it fails</b>, then checks for a <b>200 status</b> before saving, so one bad photo never stops the whole run."], "codeTitle": "Pagination loop", "code": "Do until: empty(variables('NextPageURL'))\n  HTTP GET  variables('NextPageURL')\n  Parse JSON\n  For each profile -> append to Profiles\n  Set NextPageURL = body('Parse_JSON')?['next_page']"}}];
+    const grid=document.getElementById('fl-grid'), panel=document.getElementById('fl-panel');
+    const appsOf=(steps,set=new Set())=>{steps.forEach(x=>{if(x.app)set.add(x.app); ['yes','no','body'].forEach(k=>x[k]&&appsOf(x[k],set));});return set;};
+    const chip=a=>`<span class="fl-app" style="--ac:${APPS[a][1]}"><i></i>${APPS[a][0]}</span>`;
+    const esc=t=>String(t).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+    function seq(steps){return '<div class="fl-seq">'+steps.map(node).join('')+'</div>';}
+    function arm(cls,lbl,steps){return `<div class="fl-arm ${cls}"><span class="lbl">${lbl}</span>${steps.length?seq(steps):'<div class="none">Continue</div>'}</div>`;}
+    function node(x){
+      if(x.t==='cond') return `<div class="fl-cond"><div class="fl-q">${esc(x.label)}</div><div class="fl-br">${arm('y','Yes',x.yes||[])}${arm('n','No',x.no||[])}</div></div>`;
+      if(x.t==='loop') return `<div class="fl-loop"><span class="lbl">${esc(x.label)}</span>${seq(x.body)}</div>`;
+      const a=APPS[x.app];
+      return `<div class="fl-step ${x.t==='trigger'?'trig':''}" style="--ac:${a[1]}"><span class="k">${x.t==='trigger'?'Trigger · ':''}${a[0]}</span><b>${esc(x.label)}</b>${x.note?'<small>'+esc(x.note)+'</small>':''}</div>`;
+    }
+    function detail(d){
+      const left=`<div class="fl-dcol"><h4>How it works</h4><ul>${d.points.map(p=>'<li>'+p+'</li>').join('')}</ul>`+(d.anatomy?`<h4>Card anatomy</h4><ol class="fl-anat">${d.anatomy.map(a=>'<li><b>'+esc(a[0])+'</b><span>'+esc(a[1])+'</span></li>').join('')}</ol>`:'')+'</div>';
+      const right=d.code?`<div class="fl-dcol"><h4>${esc(d.codeTitle||'Card template')} <span>(simplified)</span></h4><pre class="fl-code"><code>${esc(d.code)}</code></pre></div>`:'';
+      return `<div class="fl-detail">${left}${right}</div>`;
+    }
+    FLOWS.forEach(f=>{
+      const b=document.createElement('button'); b.type='button'; b.className='fl-card'; b.dataset.f=f.id; b.setAttribute('aria-controls','fl-panel'); b.setAttribute('aria-expanded','false');
+      b.innerHTML=`<h3>${esc(f.title)}</h3><p>${esc(f.summary)}</p><span class="trig">Starts on: <b>${esc(f.trigger)}</b></span><span class="fl-apps">${[...appsOf(f.steps)].filter(a=>a!=='logic'&&a!=='manual').map(chip).join('')}</span>`;
+      b.onclick=()=>openF(f,b); grid.appendChild(b);
+    });
+    function openF(f,b){
+      const was=b.classList.contains('on');
+      grid.querySelectorAll('.fl-card').forEach(c=>{c.classList.remove('on');c.setAttribute('aria-expanded','false');});
+      if(was){panel.hidden=true;return;}
+      b.classList.add('on'); b.setAttribute('aria-expanded','true');
+      panel.innerHTML=`<div class="fl-head"><div><h3>${esc(f.title)}</h3><p>${esc(f.summary)}</p></div><button type="button" class="fl-close">Close &times;</button></div><p class="fl-hint">Swipe sideways to see every branch.</p><div class="fl-chart">${seq(f.steps)}</div>`+(f.detail?detail(f.detail):'');
+      panel.querySelector('.fl-close').onclick=()=>{panel.hidden=true;b.classList.remove('on');b.setAttribute('aria-expanded','false');b.focus();};
+      panel.hidden=false;
+      const ch=panel.querySelector('.fl-chart'); ch.scrollLeft=(ch.scrollWidth-ch.clientWidth)/2;
+      panel.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
+    }
+  })();
   const m=location.hash.match(/^#p-(\w+)/);
   if(m){const f=fruits.find(x=>x.dataset.p===m[1]); if(f) show(f,true);}
 })();
